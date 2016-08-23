@@ -1,0 +1,17 @@
+[user]
+	email = EMAIL
+	name = Matt Decuir
+[pull]
+	rebase = false
+	ff = only
+[merge]
+	ff = only
+[log]
+	decorate = auto
+[tag]
+	sort = version:refname
+[alias]
+	c  = commit
+	co = checkout
+	dt = difftool
+	showtool = "!sh -c 'if [ -z $1 ]; then REVISION=HEAD; else REVISION=$1; fi; git difftool $REVISION~ $REVISION' -"
