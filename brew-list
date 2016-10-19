@@ -5,8 +5,9 @@ bash
 bash-completion
 chromedriver
 gcc
-git
 ghostscript
+git
+gmp
 gpg-agent
 heroku
 icu4c
@@ -18,4 +19,5 @@ phantomjs
 rbenv
 redis
 ruby-build
+the_silver_searcher
 wget
