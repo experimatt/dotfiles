@@ -38,6 +38,10 @@ open http://brew.sh
 # run command from website
 brew tap caskroom/cask
 brew tap caskroom/versions
+```
+
+### brew install
+```
 cat ~/dotfiles/cask-list | xargs brew cask install
 cat ~/dotfiles/brew-list | xargs brew install
 ```
