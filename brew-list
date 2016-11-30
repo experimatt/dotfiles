@@ -13,7 +13,7 @@ heroku
 icu4c
 imagemagick
 maven
-node
+nvm
 openssl
 phantomjs
 rbenv
