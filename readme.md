@@ -28,7 +28,8 @@ cat ~/.ssh/id_rsa.pub                   # show SSH key so you can copy to github
 ### dotfiles
 ```
 git clone git@github.com:experimatt/dotfiles.git
-cp dotfiles/.bash* ~/
+ln -sF dotfiles/.bash_profile ~/.bash_profile
+cp dotfiles/.bashrc ~/
 # restart terminal
 ```
 
@@ -55,13 +56,6 @@ cat ~/dotfiles/brew-list | xargs brew install
  * Window: Columns 90; Rows 30
 
 ### Atom
- * UI Theme: One Dark
- * Syntax Theme: Base16 Tomorrow Dark
- * Install Packages:
-  * atom-beautify
-  * cucumber
-  * cucumber-step
-  * language-gherkin
-  * git-control
- * Settings:
-  * Preferred Line Length: 9999
+ ```
+ ln -s dotfiles/.atom .atom
+ ```
