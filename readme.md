@@ -4,7 +4,9 @@
 
 ## System preferences
 ```
+touch ~/.hushlogin # hush last login in terminal
 defaults write -g com.apple.swipescrolldirection -bool FALSE # trackpad scroll direction
+#TODO: Figure out other terminal commands to set system preferences
 ```
 
  * Trackpad Settings > Scroll & Zoom > uncheck Scroll direction: natural
