@@ -3,6 +3,10 @@
    Instructions to setup a mac just the way Matt likes it.
 
 ## System preferences
+```
+defaults write -g com.apple.swipescrolldirection -bool FALSE # trackpad scroll direction
+```
+
  * Trackpad Settings > Scroll & Zoom > uncheck Scroll direction: natural
  * Displays > Slightly more space
  * Security & Privacy > Require password 5 seconds
@@ -58,4 +62,5 @@ cat ~/dotfiles/brew-list | xargs brew install
 ### Atom
  ```
  ln -s dotfiles/.atom .atom
+
  ```
