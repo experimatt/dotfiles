@@ -111,6 +111,63 @@
       }
     }
   },
+  "bash": {
+    "title": "Bash",
+    "type": "object",
+    "description": "Options for language Bash",
+    "collapsed": true,
+    "beautifiers": [
+      "beautysh"
+    ],
+    "grammars": [
+      "Shell Script"
+    ],
+    "extensions": [
+      "bash",
+      "sh"
+    ],
+    "properties": {
+      "indent_size": {
+        "type": "integer",
+        "default": 2,
+        "minimum": 0,
+        "description": "Indentation size/length (Supported by beautysh)",
+        "title": "Indent size",
+        "beautifiers": [
+          "beautysh"
+        ],
+        "key": "indent_size",
+        "language": {
+          "name": "Bash",
+          "namespace": "bash"
+        }
+      },
+      "disabled": {
+        "title": "Disable Beautifying Language",
+        "order": -3,
+        "type": "boolean",
+        "default": false,
+        "description": "Disable Bash Beautification"
+      },
+      "default_beautifier": {
+        "title": "Default Beautifier",
+        "order": -2,
+        "type": "string",
+        "default": "beautysh",
+        "description": "Default Beautifier to be used for Bash",
+        "enum": [
+          "beautysh"
+        ]
+      },
+      "beautify_on_save": {
+        "title": "Beautify On Save",
+        "order": -1,
+        "type": "boolean",
+        "default": false,
+        "description": "Automatically beautify Bash files on save"
+      }
+    }
+  },
   "cs": {
     "title": "C#",
     "type": "object",
@@ -1161,21 +1218,26 @@
     "description": "Options for language EJS",
     "collapsed": true,
     "beautifiers": [
+      "JS Beautify",
       "Pretty Diff"
     ],
     "grammars": [
+      "EJS",
       "JavaScript Template",
       "HTML (Angular)"
     ],
-    "extensions": [],
+    "extensions": [
+      "ejs"
+    ],
     "properties": {
       "indent_size": {
         "type": "integer",
         "default": 4,
         "minimum": 0,
-        "description": "Indentation size/length (Supported by Pretty Diff)",
+        "description": "Indentation size/length (Supported by JS Beautify, Pretty Diff)",
         "title": "Indent size",
         "beautifiers": [
+          "JS Beautify",
           "Pretty Diff"
         ],
         "key": "indent_size",
@@ -1187,9 +1249,10 @@
       "indent_char": {
         "type": "string",
         "default": " ",
-        "description": "Indentation character (Supported by Pretty Diff)",
+        "description": "Indentation character (Supported by JS Beautify, Pretty Diff)",
         "title": "Indent char",
         "beautifiers": [
+          "JS Beautify",
           "Pretty Diff"
         ],
         "key": "indent_char",
@@ -1198,12 +1261,27 @@
           "namespace": "html"
         }
       },
+      "indent_level": {
+        "type": "integer",
+        "default": 0,
+        "description": "Initial indentation level (Supported by JS Beautify)",
+        "title": "Indent level",
+        "beautifiers": [
+          "JS Beautify"
+        ],
+        "key": "indent_level",
+        "language": {
+          "name": "JavaScript",
+          "namespace": "js"
+        }
+      },
       "indent_with_tabs": {
         "type": "boolean",
         "default": false,
-        "description": "Indentation uses tabs, overrides `Indent Size` and `Indent Char` (Supported by Pretty Diff)",
+        "description": "Indentation uses tabs, overrides `Indent Size` and `Indent Char` (Supported by JS Beautify, Pretty Diff)",
         "title": "Indent with tabs",
         "beautifiers": [
+          "JS Beautify",
           "Pretty Diff"
         ],
         "key": "indent_with_tabs",
@@ -1215,9 +1293,10 @@
       "preserve_newlines": {
         "type": "boolean",
         "default": true,
-        "description": "Preserve line-breaks (Supported by Pretty Diff)",
+        "description": "Preserve line-breaks (Supported by JS Beautify, Pretty Diff)",
         "title": "Preserve newlines",
         "beautifiers": [
+          "JS Beautify",
           "Pretty Diff"
         ],
         "key": "preserve_newlines",
@@ -1226,12 +1305,27 @@
           "namespace": "html"
         }
       },
+      "max_preserve_newlines": {
+        "type": "integer",
+        "default": 10,
+        "description": "Number of line-breaks to be preserved in one chunk (Supported by JS Beautify)",
+        "title": "Max preserve newlines",
+        "beautifiers": [
+          "JS Beautify"
+        ],
+        "key": "max_preserve_newlines",
+        "language": {
+          "name": "HTML",
+          "namespace": "html"
+        }
+      },
       "space_in_paren": {
         "type": "boolean",
         "default": false,
-        "description": "Add padding spaces within paren, ie. f( a, b ) (Supported by Pretty Diff)",
+        "description": "Add padding spaces within paren, ie. f( a, b ) (Supported by JS Beautify, Pretty Diff)",
         "title": "Space in paren",
         "beautifiers": [
+          "JS Beautify",
           "Pretty Diff"
         ],
         "key": "space_in_paren",
@@ -1240,12 +1334,27 @@
           "namespace": "js"
         }
       },
+      "jslint_happy": {
+        "type": "boolean",
+        "default": false,
+        "description": "Enable jslint-stricter mode (Supported by JS Beautify)",
+        "title": "Jslint happy",
+        "beautifiers": [
+          "JS Beautify"
+        ],
+        "key": "jslint_happy",
+        "language": {
+          "name": "JavaScript",
+          "namespace": "js"
+        }
+      },
       "space_after_anon_function": {
         "type": "boolean",
         "default": false,
-        "description": "Add a space before an anonymous function's parens, ie. function () (Supported by Pretty Diff)",
+        "description": "Add a space before an anonymous function's parens, ie. function () (Supported by JS Beautify, Pretty Diff)",
         "title": "Space after anon function",
         "beautifiers": [
+          "JS Beautify",
           "Pretty Diff"
         ],
         "key": "space_after_anon_function",
@@ -1254,12 +1363,34 @@
           "namespace": "js"
         }
       },
+      "brace_style": {
+        "type": "string",
+        "default": "collapse",
+        "enum": [
+          "collapse",
+          "expand",
+          "end-expand",
+          "none",
+          "none"
+        ],
+        "description": "[collapse|expand|end-expand|none] (Supported by JS Beautify)",
+        "title": "Brace style",
+        "beautifiers": [
+          "JS Beautify"
+        ],
+        "key": "brace_style",
+        "language": {
+          "name": "HTML",
+          "namespace": "html"
+        }
+      },
       "break_chained_methods": {
         "type": "boolean",
         "default": false,
-        "description": "Break chained method calls across subsequent lines (Supported by Pretty Diff)",
+        "description": "Break chained method calls across subsequent lines (Supported by JS Beautify, Pretty Diff)",
         "title": "Break chained methods",
         "beautifiers": [
+          "JS Beautify",
           "Pretty Diff"
         ],
         "key": "break_chained_methods",
@@ -1268,12 +1399,83 @@
           "namespace": "js"
         }
       },
+      "keep_array_indentation": {
+        "type": "boolean",
+        "default": false,
+        "description": "Preserve array indentation (Supported by JS Beautify)",
+        "title": "Keep array indentation",
+        "beautifiers": [
+          "JS Beautify"
+        ],
+        "key": "keep_array_indentation",
+        "language": {
+          "name": "JavaScript",
+          "namespace": "js"
+        }
+      },
+      "keep_function_indentation": {
+        "type": "boolean",
+        "default": false,
+        "description": " (Supported by JS Beautify)",
+        "title": "Keep function indentation",
+        "beautifiers": [
+          "JS Beautify"
+        ],
+        "key": "keep_function_indentation",
+        "language": {
+          "name": "JavaScript",
+          "namespace": "js"
+        }
+      },
+      "space_before_conditional": {
+        "type": "boolean",
+        "default": true,
+        "description": " (Supported by JS Beautify)",
+        "title": "Space before conditional",
+        "beautifiers": [
+          "JS Beautify"
+        ],
+        "key": "space_before_conditional",
+        "language": {
+          "name": "JavaScript",
+          "namespace": "js"
+        }
+      },
+      "eval_code": {
+        "type": "boolean",
+        "default": false,
+        "description": " (Supported by JS Beautify)",
+        "title": "Eval code",
+        "beautifiers": [
+          "JS Beautify"
+        ],
+        "key": "eval_code",
+        "language": {
+          "name": "JavaScript",
+          "namespace": "js"
+        }
+      },
+      "unescape_strings": {
+        "type": "boolean",
+        "default": false,
+        "description": "Decode printable characters encoded in xNN notation (Supported by JS Beautify)",
+        "title": "Unescape strings",
+        "beautifiers": [
+          "JS Beautify"
+        ],
+        "key": "unescape_strings",
+        "language": {
+          "name": "JavaScript",
+          "namespace": "js"
+        }
+      },
       "wrap_line_length": {
         "type": "integer",
         "default": 250,
-        "description": "Maximum characters per line (0 disables) (Supported by Pretty Diff)",
+        "description": "Maximum characters per line (0 disables) (Supported by JS Beautify, Pretty Diff)",
         "title": "Wrap line length",
         "beautifiers": [
+          "JS Beautify",
           "Pretty Diff"
         ],
         "key": "wrap_line_length",
@@ -1282,18 +1484,206 @@
           "namespace": "html"
         }
       },
+      "end_with_newline": {
+        "type": "boolean",
+        "default": false,
+        "description": "End output with newline (Supported by JS Beautify)",
+        "title": "End with newline",
+        "beautifiers": [
+          "JS Beautify"
+        ],
+        "key": "end_with_newline",
+        "language": {
+          "name": "HTML",
+          "namespace": "html"
+        }
+      },
       "end_with_comma": {
         "type": "boolean",
         "default": false,
-        "description": "If a terminating comma should be inserted into arrays, object literals, and destructured objects. (Supported by Pretty Diff)",
+        "description": "If a terminating comma should be inserted into arrays, object literals, and destructured objects. (Supported by JS Beautify, Pretty Diff)",
         "title": "End with comma",
         "beautifiers": [
+          "JS Beautify",
           "Pretty Diff"
         ],
         "key": "end_with_comma",
         "language": {
           "name": "JavaScript",
           "namespace": "js"
+        }
+      },
+      "indent_inner_html": {
+        "type": "boolean",
+        "default": false,
+        "description": "Indent <head> and <body> sections. (Supported by JS Beautify)",
+        "title": "Indent inner html",
+        "beautifiers": [
+          "JS Beautify"
+        ],
+        "key": "indent_inner_html",
+        "language": {
+          "name": "HTML",
+          "namespace": "html"
+        }
+      },
+      "indent_scripts": {
+        "type": "string",
+        "default": "normal",
+        "enum": [
+          "keep",
+          "separate",
+          "normal"
+        ],
+        "description": "[keep|separate|normal] (Supported by JS Beautify)",
+        "title": "Indent scripts",
+        "beautifiers": [
+          "JS Beautify"
+        ],
+        "key": "indent_scripts",
+        "language": {
+          "name": "HTML",
+          "namespace": "html"
+        }
+      },
+      "wrap_attributes": {
+        "type": "string",
+        "default": "auto",
+        "enum": [
+          "auto",
+          "force"
+        ],
+        "description": "Wrap attributes to new lines [auto|force] (Supported by JS Beautify)",
+        "title": "Wrap attributes",
+        "beautifiers": [
+          "JS Beautify"
+        ],
+        "key": "wrap_attributes",
+        "language": {
+          "name": "HTML",
+          "namespace": "html"
+        }
+      },
+      "wrap_attributes_indent_size": {
+        "type": "integer",
+        "default": 4,
+        "minimum": 0,
+        "description": "Indent wrapped attributes to after N characters (Supported by JS Beautify)",
+        "title": "Wrap attributes indent size",
+        "beautifiers": [
+          "JS Beautify"
+        ],
+        "key": "wrap_attributes_indent_size",
+        "language": {
+          "name": "HTML",
+          "namespace": "html"
+        }
+      },
+      "unformatted": {
+        "type": "array",
+        "default": [
+          "a",
+          "abbr",
+          "area",
+          "audio",
+          "b",
+          "bdi",
+          "bdo",
+          "br",
+          "button",
+          "canvas",
+          "cite",
+          "code",
+          "data",
+          "datalist",
+          "del",
+          "dfn",
+          "em",
+          "embed",
+          "i",
+          "iframe",
+          "img",
+          "input",
+          "ins",
+          "kbd",
+          "keygen",
+          "label",
+          "map",
+          "mark",
+          "math",
+          "meter",
+          "noscript",
+          "object",
+          "output",
+          "progress",
+          "q",
+          "ruby",
+          "s",
+          "samp",
+          "select",
+          "small",
+          "span",
+          "strong",
+          "sub",
+          "sup",
+          "svg",
+          "template",
+          "textarea",
+          "time",
+          "u",
+          "var",
+          "video",
+          "wbr",
+          "text",
+          "acronym",
+          "address",
+          "big",
+          "dt",
+          "ins",
+          "small",
+          "strike",
+          "tt",
+          "pre",
+          "h1",
+          "h2",
+          "h3",
+          "h4",
+          "h5",
+          "h6"
+        ],
+        "items": {
+          "type": "string"
+        },
+        "description": "List of tags (defaults to inline) that should not be reformatted (Supported by JS Beautify)",
+        "title": "Unformatted",
+        "beautifiers": [
+          "JS Beautify"
+        ],
+        "key": "unformatted",
+        "language": {
+          "name": "HTML",
+          "namespace": "html"
+        }
+      },
+      "extra_liners": {
+        "type": "array",
+        "default": [
+          "head",
+          "body",
+          "/html"
+        ],
+        "items": {
+          "type": "string"
+        },
+        "description": "List of tags (defaults to [head,body,/html] that should have an extra newline before them. (Supported by JS Beautify)",
+        "title": "Extra liners",
+        "beautifiers": [
+          "JS Beautify"
+        ],
+        "key": "extra_liners",
+        "language": {
+          "name": "HTML",
+          "namespace": "html"
         }
       },
       "disabled": {
@@ -1307,9 +1697,10 @@
         "title": "Default Beautifier",
         "order": -2,
         "type": "string",
-        "default": "Pretty Diff",
+        "default": "JS Beautify",
         "description": "Default Beautifier to be used for EJS",
         "enum": [
+          "JS Beautify",
           "Pretty Diff"
         ]
       },
@@ -1577,6 +1968,64 @@
       }
     }
   },
+  "glsl": {
+    "title": "GLSL",
+    "type": "object",
+    "description": "Options for language GLSL",
+    "collapsed": true,
+    "beautifiers": [
+      "clang-format"
+    ],
+    "grammars": [
+      "C",
+      "opencl",
+      "GLSL"
+    ],
+    "extensions": [
+      "vert",
+      "frag"
+    ],
+    "properties": {
+      "configPath": {
+        "type": "string",
+        "default": "",
+        "description": "Path to clang-format config file. i.e. clang-format.cfg (Supported by clang-format)",
+        "title": "Config Path",
+        "beautifiers": [
+          "clang-format"
+        ],
+        "key": "configPath",
+        "language": {
+          "name": "GLSL",
+          "namespace": "glsl"
+        }
+      },
+      "disabled": {
+        "title": "Disable Beautifying Language",
+        "order": -3,
+        "type": "boolean",
+        "default": false,
+        "description": "Disable GLSL Beautification"
+      },
+      "default_beautifier": {
+        "title": "Default Beautifier",
+        "order": -2,
+        "type": "string",
+        "default": "clang-format",
+        "description": "Default Beautifier to be used for GLSL",
+        "enum": [
+          "clang-format"
+        ]
+      },
+      "beautify_on_save": {
+        "title": "Beautify On Save",
+        "order": -1,
+        "type": "boolean",
+        "default": false,
+        "description": "Automatically beautify GLSL files on save"
+      }
+    }
+  },
   "go": {
     "title": "Go",
     "type": "object",
@@ -1631,7 +2080,9 @@
     ],
     "extensions": [
       "f90",
-      "F90"
+      "F90",
+      "f95",
+      "F95"
     ],
     "properties": {
       "emacs_path": {
@@ -3168,12 +3619,14 @@
     "description": "Options for language JSX",
     "collapsed": true,
     "beautifiers": [
+      "JS Beautify",
       "Pretty Diff"
     ],
     "grammars": [
       "JSX",
       "JavaScript (JSX)",
-      "Babel ES6 JavaScript"
+      "Babel ES6 JavaScript",
+      "JavaScript with JSX"
     ],
     "extensions": [
       "jsx",
@@ -3184,9 +3637,10 @@
         "type": "integer",
         "default": 4,
         "minimum": 0,
-        "description": "Indentation size/length (Supported by Pretty Diff)",
+        "description": "Indentation size/length (Supported by JS Beautify, Pretty Diff)",
         "title": "Indent size",
         "beautifiers": [
+          "JS Beautify",
           "Pretty Diff"
         ],
         "key": "indent_size",
@@ -3198,9 +3652,10 @@
       "indent_char": {
         "type": "string",
         "default": " ",
-        "description": "Indentation character (Supported by Pretty Diff)",
+        "description": "Indentation character (Supported by JS Beautify, Pretty Diff)",
         "title": "Indent char",
         "beautifiers": [
+          "JS Beautify",
           "Pretty Diff"
         ],
         "key": "indent_char",
@@ -3209,12 +3664,27 @@
           "namespace": "js"
         }
       },
+      "indent_level": {
+        "type": "integer",
+        "default": 0,
+        "description": "Initial indentation level (Supported by JS Beautify)",
+        "title": "Indent level",
+        "beautifiers": [
+          "JS Beautify"
+        ],
+        "key": "indent_level",
+        "language": {
+          "name": "JavaScript",
+          "namespace": "js"
+        }
+      },
       "indent_with_tabs": {
         "type": "boolean",
         "default": false,
-        "description": "Indentation uses tabs, overrides `Indent Size` and `Indent Char` (Supported by Pretty Diff)",
+        "description": "Indentation uses tabs, overrides `Indent Size` and `Indent Char` (Supported by JS Beautify, Pretty Diff)",
         "title": "Indent with tabs",
         "beautifiers": [
+          "JS Beautify",
           "Pretty Diff"
         ],
         "key": "indent_with_tabs",
@@ -3226,9 +3696,10 @@
       "preserve_newlines": {
         "type": "boolean",
         "default": true,
-        "description": "Preserve line-breaks (Supported by Pretty Diff)",
+        "description": "Preserve line-breaks (Supported by JS Beautify, Pretty Diff)",
         "title": "Preserve newlines",
         "beautifiers": [
+          "JS Beautify",
           "Pretty Diff"
         ],
         "key": "preserve_newlines",
@@ -3237,12 +3708,27 @@
           "namespace": "js"
         }
       },
+      "max_preserve_newlines": {
+        "type": "integer",
+        "default": 10,
+        "description": "Number of line-breaks to be preserved in one chunk (Supported by JS Beautify)",
+        "title": "Max preserve newlines",
+        "beautifiers": [
+          "JS Beautify"
+        ],
+        "key": "max_preserve_newlines",
+        "language": {
+          "name": "JavaScript",
+          "namespace": "js"
+        }
+      },
       "space_in_paren": {
         "type": "boolean",
         "default": false,
-        "description": "Add padding spaces within paren, ie. f( a, b ) (Supported by Pretty Diff)",
+        "description": "Add padding spaces within paren, ie. f( a, b ) (Supported by JS Beautify, Pretty Diff)",
         "title": "Space in paren",
         "beautifiers": [
+          "JS Beautify",
           "Pretty Diff"
         ],
         "key": "space_in_paren",
@@ -3251,12 +3737,27 @@
           "namespace": "js"
         }
       },
+      "jslint_happy": {
+        "type": "boolean",
+        "default": false,
+        "description": "Enable jslint-stricter mode (Supported by JS Beautify)",
+        "title": "Jslint happy",
+        "beautifiers": [
+          "JS Beautify"
+        ],
+        "key": "jslint_happy",
+        "language": {
+          "name": "JavaScript",
+          "namespace": "js"
+        }
+      },
       "space_after_anon_function": {
         "type": "boolean",
         "default": false,
-        "description": "Add a space before an anonymous function's parens, ie. function () (Supported by Pretty Diff)",
+        "description": "Add a space before an anonymous function's parens, ie. function () (Supported by JS Beautify, Pretty Diff)",
         "title": "Space after anon function",
         "beautifiers": [
+          "JS Beautify",
           "Pretty Diff"
         ],
         "key": "space_after_anon_function",
@@ -3265,12 +3766,34 @@
           "namespace": "js"
         }
       },
+      "brace_style": {
+        "type": "string",
+        "default": "collapse",
+        "enum": [
+          "collapse",
+          "collapse-preserve-inline",
+          "expand",
+          "end-expand",
+          "none"
+        ],
+        "description": "[collapse|collapse-preserve-inline|expand|end-expand|none] (Supported by JS Beautify)",
+        "title": "Brace style",
+        "beautifiers": [
+          "JS Beautify"
+        ],
+        "key": "brace_style",
+        "language": {
+          "name": "JavaScript",
+          "namespace": "js"
+        }
+      },
       "break_chained_methods": {
         "type": "boolean",
         "default": false,
-        "description": "Break chained method calls across subsequent lines (Supported by Pretty Diff)",
+        "description": "Break chained method calls across subsequent lines (Supported by JS Beautify, Pretty Diff)",
         "title": "Break chained methods",
         "beautifiers": [
+          "JS Beautify",
           "Pretty Diff"
         ],
         "key": "break_chained_methods",
@@ -3279,12 +3802,83 @@
           "namespace": "js"
         }
       },
+      "keep_array_indentation": {
+        "type": "boolean",
+        "default": false,
+        "description": "Preserve array indentation (Supported by JS Beautify)",
+        "title": "Keep array indentation",
+        "beautifiers": [
+          "JS Beautify"
+        ],
+        "key": "keep_array_indentation",
+        "language": {
+          "name": "JavaScript",
+          "namespace": "js"
+        }
+      },
+      "keep_function_indentation": {
+        "type": "boolean",
+        "default": false,
+        "description": " (Supported by JS Beautify)",
+        "title": "Keep function indentation",
+        "beautifiers": [
+          "JS Beautify"
+        ],
+        "key": "keep_function_indentation",
+        "language": {
+          "name": "JavaScript",
+          "namespace": "js"
+        }
+      },
+      "space_before_conditional": {
+        "type": "boolean",
+        "default": true,
+        "description": " (Supported by JS Beautify)",
+        "title": "Space before conditional",
+        "beautifiers": [
+          "JS Beautify"
+        ],
+        "key": "space_before_conditional",
+        "language": {
+          "name": "JavaScript",
+          "namespace": "js"
+        }
+      },
+      "eval_code": {
+        "type": "boolean",
+        "default": false,
+        "description": " (Supported by JS Beautify)",
+        "title": "Eval code",
+        "beautifiers": [
+          "JS Beautify"
+        ],
+        "key": "eval_code",
+        "language": {
+          "name": "JavaScript",
+          "namespace": "js"
+        }
+      },
+      "unescape_strings": {
+        "type": "boolean",
+        "default": false,
+        "description": "Decode printable characters encoded in xNN notation (Supported by JS Beautify)",
+        "title": "Unescape strings",
+        "beautifiers": [
+          "JS Beautify"
+        ],
+        "key": "unescape_strings",
+        "language": {
+          "name": "JavaScript",
+          "namespace": "js"
+        }
+      },
       "wrap_line_length": {
         "type": "integer",
         "default": 0,
-        "description": "Wrap lines at next opportunity after N characters (Supported by Pretty Diff)",
+        "description": "Wrap lines at next opportunity after N characters (Supported by JS Beautify, Pretty Diff)",
         "title": "Wrap line length",
         "beautifiers": [
+          "JS Beautify",
           "Pretty Diff"
         ],
         "key": "wrap_line_length",
@@ -3293,12 +3887,27 @@
           "namespace": "js"
         }
       },
+      "end_with_newline": {
+        "type": "boolean",
+        "default": false,
+        "description": "End output with newline (Supported by JS Beautify)",
+        "title": "End with newline",
+        "beautifiers": [
+          "JS Beautify"
+        ],
+        "key": "end_with_newline",
+        "language": {
+          "name": "JavaScript",
+          "namespace": "js"
+        }
+      },
       "end_with_comma": {
         "type": "boolean",
         "default": false,
-        "description": "If a terminating comma should be inserted into arrays, object literals, and destructured objects. (Supported by Pretty Diff)",
+        "description": "If a terminating comma should be inserted into arrays, object literals, and destructured objects. (Supported by JS Beautify, Pretty Diff)",
         "title": "End with comma",
         "beautifiers": [
+          "JS Beautify",
           "Pretty Diff"
         ],
         "key": "end_with_comma",
@@ -3321,6 +3930,7 @@
         "default": "Pretty Diff",
         "description": "Default Beautifier to be used for JSX",
         "enum": [
+          "JS Beautify",
           "Pretty Diff"
         ]
       },
@@ -4801,6 +5411,7 @@
     "description": "Options for language PHP",
     "collapsed": true,
     "beautifiers": [
+      "hh_format",
       "PHP-CS-Fixer",
       "PHPCBF"
     ],
@@ -4898,6 +5509,7 @@
         "default": "PHP-CS-Fixer",
         "description": "Default Beautifier to be used for PHP",
         "enum": [
+          "hh_format",
           "PHP-CS-Fixer",
           "PHPCBF"
         ]
@@ -7283,7 +7895,9 @@
       "xsd",
       "xsl",
       "jsp",
-      "gsp"
+      "gsp",
+      "plist",
+      "recipe"
     ],
     "properties": {
       "indent_inner_html": {
