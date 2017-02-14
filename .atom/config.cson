@@ -9,6 +9,7 @@
       "base16-tomorrow-dark-theme"
     ]
   editor:
+    fontSize: 15
     showIndentGuide: true
   "exception-reporting":
     userId: "7785c7ba-a484-1dc1-0f9b-b2a819a0ddc9"

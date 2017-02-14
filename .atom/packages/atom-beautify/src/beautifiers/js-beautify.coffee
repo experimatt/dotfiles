@@ -33,7 +33,7 @@ module.exports = class JSBeautify extends Beautifier
     return new @Promise((resolve, reject) =>
       try
         switch language
-          when "JSON", "JavaScript"
+          when "JSON", "JavaScript", "JSX"
             beautifyJS = require("js-beautify")
             text = beautifyJS(text, options)
             resolve text
@@ -44,7 +44,7 @@ module.exports = class JSBeautify extends Beautifier
             beautifyHTML = require("js-beautify").html
             text = beautifyHTML(text, options)
             resolve text
-          when "HTML (Liquid)", "HTML", "XML", "Web Form/Control (C#)", "Web Handler (C#)"
+          when "EJS", "HTML (Liquid)", "HTML", "XML", "Web Form/Control (C#)", "Web Handler (C#)"
             beautifyHTML = require("js-beautify").html
             text = beautifyHTML(text, options)
             @debug("Beautified HTML: #{text}")
@@ -53,6 +53,8 @@ module.exports = class JSBeautify extends Beautifier
             beautifyCSS = require("js-beautify").css
             text = beautifyCSS(text, options)
             resolve text
+          else
+            reject(new Error("Unknown language for JS Beautify: "+language))
       catch err
         @error("JS Beautify error: #{err}")
         reject(err)

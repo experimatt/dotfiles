@@ -79,7 +79,7 @@ function deresolve(targetPath, from, options) {
     if (targetPath.startsWith(fromRootDir)) {
         var fromNodeModulesDir = nodePath.join(fromRootDir, 'node_modules');
 
-        if (targetRootDir.startsWith(fromNodeModulesDir)) {
+        if (targetRootDir && targetRootDir.startsWith(fromNodeModulesDir)) {
             // They have a common root so the target path must in an installed module that is
             // *not* linked in.
             //
@@ -103,7 +103,7 @@ function deresolve(targetPath, from, options) {
         }
     }
 
-    if (!deresolvedPath) {
+    if (!deresolvedPath && targetRootDir) {
         // The module is linked in or is not installed at the project level.
         // We will try deresolving using the name of target module
         //
@@ -140,7 +140,7 @@ function deresolve(targetPath, from, options) {
         return relPath(targetPath, from, shouldRemoveExt);
     }
 
-    var targetMain = findMain(targetRootDir);
+    var targetMain = targetRootDir && findMain(targetRootDir);
 
 	if (targetMain === targetPath) {
         // Chop off the ending part that main resolves to

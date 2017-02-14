@@ -2,40 +2,40 @@
   "_args": [
     [
       {
-        "raw": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-117012-32996-6sbllj/package.tgz",
+        "raw": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-11719-93191-kv077c/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-117012-32996-6sbllj/package.tgz",
-        "spec": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-117012-32996-6sbllj/package.tgz",
+        "rawSpec": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-11719-93191-kv077c/package.tgz",
+        "spec": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-11719-93191-kv077c/package.tgz",
         "type": "local"
       },
-      "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/apm-install-dir-117012-32996-1h28wld"
+      "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/apm-install-dir-11719-93191-txa8gd"
     ]
   ],
-  "_from": "../d-117012-32996-6sbllj/package.tgz",
-  "_id": "atom-beautify@0.29.16",
+  "_from": "../d-11719-93191-kv077c/package.tgz",
+  "_id": "atom-beautify@0.29.17",
   "_inCache": true,
   "_installable": true,
   "_location": "/atom-beautify",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-117012-32996-6sbllj/package.tgz",
+    "raw": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-11719-93191-kv077c/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-117012-32996-6sbllj/package.tgz",
-    "spec": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-117012-32996-6sbllj/package.tgz",
+    "rawSpec": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-11719-93191-kv077c/package.tgz",
+    "spec": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-11719-93191-kv077c/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-117012-32996-6sbllj/package.tgz",
-  "_shasum": "b98e1044092bac8ab09d7a7a7148da70eb6ba5c8",
+  "_resolved": "file:../d-11719-93191-kv077c/package.tgz",
+  "_shasum": "b463d188fc9ae62f8b33e3dba65625f7207776a2",
   "_shrinkwrap": null,
-  "_spec": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-117012-32996-6sbllj/package.tgz",
-  "_where": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/apm-install-dir-117012-32996-1h28wld",
+  "_spec": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-11719-93191-kv077c/package.tgz",
+  "_where": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/apm-install-dir-11719-93191-txa8gd",
   "activationCommands": {
     "atom-workspace": [
       "atom-beautify:help-debug-editor",
@@ -345,5 +345,5 @@
     "postinstall": "npm run build-options",
     "prepublish": "npm run docs"
   },
-  "version": "0.29.16"
+  "version": "0.29.17"
 }

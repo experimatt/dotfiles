@@ -13,7 +13,7 @@ function getRootPackage(dirname) {
     while (true) {
         var packagePath = nodePath.join(currentDir, 'package.json');
         var pkg = lassoCachingFS.readPackageSync(packagePath);
-        if (pkg && pkg.name) {
+        if (pkg && (pkg.name || pkg.dependencies || pkg.version || pkg.devDependencies || pkg.peerDependencies)) {
             rootPkg = pkg;
             break;
         }
