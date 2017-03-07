@@ -21,3 +21,5 @@ redis
 ruby-build
 the_silver_searcher
 wget
+zsh
+zsh-completions

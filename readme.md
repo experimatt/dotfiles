@@ -34,9 +34,9 @@ cat ~/.ssh/id_rsa.pub                   # show SSH key so you can copy to github
 ### dotfiles
 ```
 git clone git@github.com:experimatt/dotfiles.git
-ln -sF dotfiles/.bash_profile ~/.bash_profile
-cp dotfiles/.bashrc ~/
-# restart terminal
+ln -s dotfiles/.zshrc ~/.zshrc
+ln -s dotfiles/.oh-my-zsh ~/.oh-my-zsh
+source ~/.zshrc # or restart terminal
 ```
 
 ### homebrew
@@ -53,16 +53,17 @@ cat ~/dotfiles/cask-list | xargs brew cask install
 cat ~/dotfiles/brew-list | xargs brew install
 ```
 
-## Software config
-
-### Terminal
- * Profile: Tomorrow Night Bright (via https://github.com/lysyi3m/osx-terminal-themes)
-  * Text: bright green
-  * Bold Text: light blue
- * Window: Columns 90; Rows 30
-
-### Atom
+### atom
  ```
  ln -s dotfiles/.atom .atom
 
  ```
+ 
+# Software config
+
+### Terminal
+(old terminal config)
+ * Profile: Tomorrow Night Bright (via https://github.com/lysyi3m/osx-terminal-themes)
+  * Text: bright green
+  * Bold Text: light blue
+ * Window: Columns 90; Rows 30
