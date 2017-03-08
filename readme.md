@@ -34,8 +34,8 @@ cat ~/.ssh/id_rsa.pub                   # show SSH key so you can copy to github
 ### dotfiles
 ```
 git clone git@github.com:experimatt/dotfiles.git
-ln -s dotfiles/.zshrc ~/.zshrc
-ln -s dotfiles/.oh-my-zsh ~/.oh-my-zsh
+ln -sF dotfiles/.zshrc ~/.zshrc
+ln -sF dotfiles/.oh-my-zsh ~/.oh-my-zsh
 source ~/.zshrc # or restart terminal
 ```
 
@@ -58,7 +58,7 @@ cat ~/dotfiles/brew-list | xargs brew install
  ln -s dotfiles/.atom .atom
 
  ```
- 
+
 # Software config
 
 ### Terminal
