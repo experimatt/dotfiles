@@ -57,6 +57,7 @@ plugins=(git zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 source $DOTFILES/.commonrc
 # source $DOTFILES/.workrc
+bindkey -v # use vim keybindings. -e for emacs
 
 # User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -85,5 +86,6 @@ source $DOTFILES/.commonrc
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
 
 source $DOTFILES/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
