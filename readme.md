@@ -36,6 +36,7 @@ cat ~/.ssh/id_rsa.pub                   # show SSH key so you can copy to github
 git clone git@github.com:experimatt/dotfiles.git
 ln -sF dotfiles/.zshrc ~/.zshrc
 ln -sF dotfiles/.oh-my-zsh ~/.oh-my-zsh
+ln -sF dotfiles/.vimrc ~/.vimrc
 source ~/.zshrc # or restart terminal
 ```
 
