@@ -2,40 +2,40 @@
   "_args": [
     [
       {
-        "raw": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-11719-95802-rson5b/package.tgz",
+        "raw": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-117221-56716-ioks1i/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-11719-95802-rson5b/package.tgz",
-        "spec": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-11719-95802-rson5b/package.tgz",
+        "rawSpec": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-117221-56716-ioks1i/package.tgz",
+        "spec": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-117221-56716-ioks1i/package.tgz",
         "type": "local"
       },
-      "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/apm-install-dir-11719-95802-1ec97ji"
+      "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/apm-install-dir-117221-56716-szwhjh"
     ]
   ],
-  "_from": "../d-11719-95802-rson5b/package.tgz",
-  "_id": "linter-puppet-lint@0.8.1",
+  "_from": "../d-117221-56716-ioks1i/package.tgz",
+  "_id": "linter-puppet-lint@0.8.2",
   "_inCache": true,
   "_installable": true,
   "_location": "/linter-puppet-lint",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-11719-95802-rson5b/package.tgz",
+    "raw": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-117221-56716-ioks1i/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-11719-95802-rson5b/package.tgz",
-    "spec": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-11719-95802-rson5b/package.tgz",
+    "rawSpec": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-117221-56716-ioks1i/package.tgz",
+    "spec": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-117221-56716-ioks1i/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-11719-95802-rson5b/package.tgz",
-  "_shasum": "87a4d7610d1cbbbb7ee2d019997cc5f999485918",
+  "_resolved": "file:../d-117221-56716-ioks1i/package.tgz",
+  "_shasum": "95a4e603be243f6422d218eb207dcc6c01ca05ef",
   "_shrinkwrap": null,
-  "_spec": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-11719-95802-rson5b/package.tgz",
-  "_where": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/apm-install-dir-11719-95802-1ec97ji",
+  "_spec": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-117221-56716-ioks1i/package.tgz",
+  "_where": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/apm-install-dir-117221-56716-szwhjh",
   "bugs": {
     "url": "https://github.com/AtomLinter/linter-puppet-lint/issues"
   },
@@ -224,13 +224,13 @@
     }
   },
   "dependencies": {
-    "atom-linter": "^8.0.0",
+    "atom-linter": "^9.0.0",
     "atom-package-deps": "^4.0.1"
   },
   "description": "Lint puppet on save using puppet-lint",
   "devDependencies": {
-    "eslint": "^3.8.0",
-    "eslint-config-airbnb-base": "^9.0.0",
+    "eslint": "^3.14.0",
+    "eslint-config-airbnb-base": "^11.0.0",
     "eslint-plugin-import": "^2.0.1"
   },
   "engines": {
@@ -289,5 +289,5 @@
     "lint": "eslint .",
     "test": "apm test"
   },
-  "version": "0.8.1"
+  "version": "0.8.2"
 }

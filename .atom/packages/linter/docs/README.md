@@ -4,15 +4,20 @@ Welcome to the official Linter docs.
 
 ## Linter Provider Examples
 
-*   [Indie Linter Provider v1](examples/indie-linter-v1.md) (push-style)
-*   [Standard Linter Provider v1](examples/standard-linter-v1.md) (pull-style)
+*   [Indie Linter Provider v2](examples/indie-linter-v2.md) (push-style)
+*   [Standard Linter Provider v2](examples/standard-linter-v2.md) (pull-style)
+*   [UI Provider v1](examples/ui-provider-v1.md)
 
 ## Types
 
-*   [Linter Message v1](types/linter-message-v1.md)
-*   [Indie Linter Provider v1](types/indie-linter-v1.md) (push-style)
-*   [Standard Linter Provider v1](types/standard-linter-v1.md) (pull-style)
+*   [Linter Message v2](types/linter-message-v2.md)
+*   [Indie Linter Provider v2](types/indie-linter-v2.md) (push-style)
+*   [Standard Linter Provider v2](types/standard-linter-v2.md) (pull-style)
+*   [UI Provider v1](types/ui-provider-v1.md)
 
-## Guides
+## Migration Guides
 
-*   [Configuration](guides/configuration.md)
+*   [Upgrading to Indie Linter v2](guides/upgrading-to-indie-linter-v2.md)
+*   [Upgrading to Standard Linter v2](guides/upgrading-to-standard-linter-v2.md)
+
+[v1 docs]: https://github.com/steelbrain/linter/tree/v1/docs

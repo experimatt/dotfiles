@@ -1,59 +1,57 @@
-'use babel'
+/* @flow */
 
-import {Emitter, CompositeDisposable} from 'atom'
-const EditorLinter = require('./editor-linter')
+import { Emitter, CompositeDisposable } from 'atom'
+import type { Disposable, TextEditor } from 'atom'
+import EditorLinter from './editor-linter'
 
 export default class EditorRegistry {
+  emitter: Emitter;
+  lintOnOpen: boolean;
+  subscriptions: CompositeDisposable;
+  editorLinters: Map<TextEditor, EditorLinter>;
+
   constructor() {
     this.emitter = new Emitter()
     this.subscriptions = new CompositeDisposable()
     this.editorLinters = new Map()
 
     this.subscriptions.add(this.emitter)
+    this.subscriptions.add(atom.config.observe('linter.lintOnOpen', (lintOnOpen) => {
+      this.lintOnOpen = lintOnOpen
+    }))
   }
-
-  create(textEditor) {
-    const editorLinter = new EditorLinter(textEditor)
-    this.editorLinters.set(textEditor, editorLinter)
-    this.emitter.emit('observe', editorLinter)
-    editorLinter.onDidDestroy(() =>
-      this.editorLinters.delete(textEditor)
-    )
-    this.subscriptions.add(editorLinter)
-    return editorLinter
+  activate() {
+    this.subscriptions.add(atom.workspace.observeTextEditors((textEditor) => {
+      this.createFromTextEditor(textEditor)
+    }))
   }
-
-  has(textEditor) {
-    return this.editorLinters.has(textEditor)
-  }
-
-  forEach(textEditor) {
-    this.editorLinters.forEach(textEditor)
-  }
-
-  ofPath(path) {
-    for (let editorLinter of this.editorLinters) {
-      if (editorLinter[0].getPath() === path) {
-        return editorLinter[1]
-      }
-    }
-  }
-
-  ofTextEditor(textEditor) {
+  get(textEditor: TextEditor): ?EditorLinter {
     return this.editorLinters.get(textEditor)
   }
-
-  ofActiveTextEditor() {
-    return this.ofTextEditor(atom.workspace.getActiveTextEditor())
+  createFromTextEditor(textEditor: TextEditor): EditorLinter {
+    let editorLinter = this.editorLinters.get(textEditor)
+    if (editorLinter) {
+      return editorLinter
+    }
+    editorLinter = new EditorLinter(textEditor)
+    editorLinter.onDidDestroy(() => {
+      this.editorLinters.delete(textEditor)
+    })
+    this.editorLinters.set(textEditor, editorLinter)
+    this.emitter.emit('observe', editorLinter)
+    if (this.lintOnOpen) {
+      editorLinter.lint()
+    }
+    return editorLinter
   }
-
-  observe(callback) {
-    this.forEach(callback)
+  observe(callback: ((editorLinter: EditorLinter) => void)): Disposable {
+    this.editorLinters.forEach(callback)
     return this.emitter.on('observe', callback)
   }
-
   dispose() {
+    for (const entry of this.editorLinters.values()) {
+      entry.dispose()
+    }
     this.subscriptions.dispose()
-    this.editorLinters.clear()
   }
 }

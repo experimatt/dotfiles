@@ -1,79 +1,161 @@
-'use babel'
+/* @flow */
+/* eslint-disable import/no-duplicates */
 
-import {Emitter, CompositeDisposable} from 'atom'
-import Validate from './validate'
-import Helpers from './helpers'
+import ConfigFile from 'sb-config-file'
+import { Emitter, CompositeDisposable } from 'atom'
+import type { TextEditor, Disposable } from 'atom'
+
+import * as Helpers from './helpers'
+import * as Validate from './validate'
+import { $version, $activated, $requestLatest, $requestLastReceived, getConfigFile } from './helpers'
+import type { Linter } from './types'
 
 export default class LinterRegistry {
-  constructor() {
-    this.linters = new Set()
-    this.locks = {
-      Regular: new WeakSet(),
-      Fly: new WeakSet()
-    }
+  config: ?ConfigFile;
+  emitter: Emitter;
+  linters: Set<Linter>;
+  lintOnChange: boolean;
+  ignoreVCS: boolean;
+  ignoreGlob: string;
+  lintPreviewTabs: boolean;
+  subscriptions: CompositeDisposable;
 
-    this.subscriptions = new CompositeDisposable()
+  constructor() {
+    this.config = null
     this.emitter = new Emitter()
+    this.linters = new Set()
+    this.subscriptions = new CompositeDisposable()
+
+    this.subscriptions.add(atom.config.observe('linter.lintOnChange', (lintOnChange) => {
+      this.lintOnChange = lintOnChange
+    }))
+    this.subscriptions.add(atom.config.observe('core.excludeVcsIgnoredPaths', (ignoreVCS) => {
+      this.ignoreVCS = ignoreVCS
+    }))
+    this.subscriptions.add(atom.config.observe('linter.ignoreGlob', (ignoreGlob) => {
+      this.ignoreGlob = ignoreGlob
+    }))
+    this.subscriptions.add(atom.config.observe('linter.lintPreviewTabs', (lintPreviewTabs) => {
+      this.lintPreviewTabs = lintPreviewTabs
+    }))
     this.subscriptions.add(this.emitter)
   }
-  getLinters() {
-    return this.linters
-  }
-  hasLinter(linter) {
+  hasLinter(linter: Linter): boolean {
     return this.linters.has(linter)
   }
-  addLinter(linter) {
-    try {
-      Validate.linter(linter)
-      linter.deactivated = false
-      this.linters.add(linter)
-    } catch (err) {
-      Helpers.error(err)
-    }
-  }
-  deleteLinter(linter) {
-    if (this.linters.has(linter)) {
-      linter.deactivated = true
-      this.linters.delete(linter)
-    }
-  }
-  lint({onChange, editorLinter}) {
-    const editor = editorLinter.editor
-    const lockKey = onChange ? 'Fly' : 'Regular'
-
-    if (
-      (onChange && !atom.config.get('linter.lintOnFly')) || // Lint-on-fly mismatch
-      !editor.getPath()                                  || // Not saved anywhere yet
-      editor !== atom.workspace.getActiveTextEditor()    || // Not active
-      this.locks[lockKey].has(editorLinter)              || // Already linting
-      (atom.config.get('linter.ignoreVCSIgnoredFiles') &&
-        Helpers.isPathIgnored(editor.getPath()))            // Ignored by VCS
-    ) {
+  addLinter(linter: Linter, legacy: boolean = false) {
+    const version = legacy ? 1 : 2
+    if (!Validate.linter(linter, version)) {
       return
     }
+    linter[$activated] = true
+    if (typeof linter[$requestLatest] === 'undefined') {
+      linter[$requestLatest] = 0
+    }
+    if (typeof linter[$requestLastReceived] === 'undefined') {
+      linter[$requestLastReceived] = 0
+    }
+    linter[$version] = version
+    this.linters.add(linter)
+  }
+  getLinters(): Array<Linter> {
+    return Array.from(this.linters)
+  }
+  deleteLinter(linter: Linter) {
+    if (!this.linters.has(linter)) {
+      return
+    }
+    linter[$activated] = false
+    this.linters.delete(linter)
+  }
+  async getConfig(): Promise<ConfigFile> {
+    if (!this.config) {
+      this.config = await getConfigFile()
+    }
+    return this.config
+  }
+  async lint({ onChange, editor } : { onChange: boolean, editor: TextEditor }): Promise<boolean> {
+    const filePath = editor.getPath()
 
-    this.locks[lockKey].add(editorLinter)
-    const scopes = editor.scopeDescriptorForBufferPosition(editor.getCursorBufferPosition()).scopes
-    scopes.push('*')
+    if (
+      (onChange && !this.lintOnChange) ||                                                       // Lint-on-change mismatch
+      !filePath ||                                                                              // Not saved anywhere yet
+      Helpers.isPathIgnored(editor.getPath(), this.ignoreGlob, this.ignoreVCS) ||               // Ignored by VCS or Glob
+      (!this.lintPreviewTabs && atom.workspace.getActivePane().getPendingItem() === editor)     // Ignore Preview tabs
+    ) {
+      return false
+    }
+
+    const scopes = Helpers.getEditorCursorScopes(editor)
+    const config = await this.getConfig()
+    const disabled = await config.get('disabled')
 
     const promises = []
-    this.linters.forEach(linter => {
-      if (Helpers.shouldTriggerLinter(linter, onChange, scopes)) {
-        promises.push(new Promise(function(resolve) {
-          resolve(linter.lint(editor))
-        }).then(results => {
-          if (results) {
-            this.emitter.emit('did-update-messages', {linter, messages: results, editor})
-          }
-        }, Helpers.error))
+    for (const linter of this.linters) {
+      if (!Helpers.shouldTriggerLinter(linter, onChange, scopes)) {
+        continue
       }
-    })
-    return Promise.all(promises).then(() =>
-      this.locks[lockKey].delete(editorLinter)
-    )
+      if (disabled.includes(linter.name)) {
+        continue
+      }
+      const number = ++linter[$requestLatest]
+      const statusBuffer = linter.scope === 'file' ? editor.getBuffer() : null
+      const statusFilePath = linter.scope === 'file' ? filePath : null
+
+      this.emitter.emit('did-begin-linting', { number, linter, filePath: statusFilePath })
+      promises.push(new Promise(function(resolve) {
+        // $FlowIgnore: Type too complex, duh
+        resolve(linter.lint(editor))
+      }).then((messages) => {
+        this.emitter.emit('did-finish-linting', { number, linter, filePath: statusFilePath })
+        if (linter[$requestLastReceived] >= number || !linter[$activated] || (statusBuffer && !statusBuffer.isAlive())) {
+          return
+        }
+        linter[$requestLastReceived] = number
+        if (statusBuffer && !statusBuffer.isAlive()) {
+          return
+        }
+
+        if (messages === null) {
+          // NOTE: Do NOT update the messages when providers return null
+          return
+        }
+
+        let validity = true
+        // NOTE: We are calling it when results are not an array to show a nice notification
+        if (atom.inDevMode() || !Array.isArray(messages)) {
+          validity = linter[$version] === 2 ? Validate.messages(linter.name, messages) : Validate.messagesLegacy(linter.name, messages)
+        }
+        if (!validity) {
+          return
+        }
+
+        if (linter[$version] === 2) {
+          Helpers.normalizeMessages(linter.name, messages)
+        } else {
+          Helpers.normalizeMessagesLegacy(linter.name, messages)
+        }
+        this.emitter.emit('did-update-messages', { messages, linter, buffer: statusBuffer })
+      }, (error) => {
+        this.emitter.emit('did-finish-linting', { number, linter, filePath: statusFilePath })
+        atom.notifications.addError(`[Linter] Error running ${linter.name}`, {
+          detail: 'See console for more info',
+        })
+        console.error(`[Linter] Error running ${linter.name}`, error)
+      }))
+    }
+
+    await Promise.all(promises)
+    return true
   }
-  onDidUpdateMessages(callback) {
+  onDidUpdateMessages(callback: Function): Disposable {
     return this.emitter.on('did-update-messages', callback)
+  }
+  onDidBeginLinting(callback: Function): Disposable {
+    return this.emitter.on('did-begin-linting', callback)
+  }
+  onDidFinishLinting(callback: Function): Disposable {
+    return this.emitter.on('did-finish-linting', callback)
   }
   dispose() {
     this.linters.clear()

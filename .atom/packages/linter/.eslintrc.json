@@ -1,0 +1,9 @@
+{
+  "extends": "steelbrain",
+  "rules": {
+    "no-param-reassign": "off",
+    "no-underscore-dangle": "off",
+    "no-duplicate-imports": "off",
+    "import/prefer-default-export": "off"
+  }
+}

@@ -1,55 +1,51 @@
-'use babel'
+/* @flow */
 
-import {Emitter, CompositeDisposable} from 'atom'
-import Validate from './validate'
-import Indie from './indie'
+import { Emitter, CompositeDisposable } from 'atom'
+import type { Disposable } from 'atom'
+
+import IndieDelegate from './indie-delegate'
+import { indie as validateIndie } from './validate'
+import type { Indie } from './types'
 
 export default class IndieRegistry {
-  constructor() {
-    this.subscriptions = new CompositeDisposable()
-    this.emitter = new Emitter()
+  emitter: Emitter;
+  delegates: Set<IndieDelegate>;
+  subscriptions: CompositeDisposable;
 
-    this.indieLinters = new Set()
+  constructor() {
+    this.emitter = new Emitter()
+    this.delegates = new Set()
+    this.subscriptions = new CompositeDisposable()
+
     this.subscriptions.add(this.emitter)
   }
-
-  register(linter) {
-    Validate.linter(linter, true)
-    const indieLinter = new Indie(linter)
-
-    this.subscriptions.add(indieLinter)
-    this.indieLinters.add(indieLinter)
-
+  register(config: Indie, version: 1 | 2): IndieDelegate {
+    if (!validateIndie(config)) {
+      throw new Error('Error registering Indie Linter')
+    }
+    const indieLinter = new IndieDelegate(config, version)
+    this.delegates.add(indieLinter)
     indieLinter.onDidDestroy(() => {
-      this.indieLinters.delete(indieLinter)
+      this.delegates.delete(indieLinter)
     })
-    indieLinter.onDidUpdateMessages(messages => {
-      this.emitter.emit('did-update-messages', {linter: indieLinter, messages})
+    indieLinter.onDidUpdate((messages) => {
+      this.emitter.emit('did-update', { linter: indieLinter, messages })
     })
     this.emitter.emit('observe', indieLinter)
 
     return indieLinter
   }
-  has(indieLinter) {
-    return this.indieLinters.has(indieLinter)
-  }
-  unregister(indieLinter) {
-    if (this.indieLinters.has(indieLinter)) {
-      indieLinter.dispose()
-    }
-  }
-
-  // Private method
-  observe(callback) {
-    this.indieLinters.forEach(callback)
+  observe(callback: Function): Disposable {
+    this.delegates.forEach(callback)
     return this.emitter.on('observe', callback)
   }
-  // Private method
-  onDidUpdateMessages(callback) {
-    return this.emitter.on('did-update-messages', callback)
+  onDidUpdate(callback: Function): Disposable {
+    return this.emitter.on('did-update', callback)
   }
-
   dispose() {
+    for (const entry of this.delegates) {
+      entry.dispose()
+    }
     this.subscriptions.dispose()
   }
 }

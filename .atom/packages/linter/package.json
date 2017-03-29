@@ -2,92 +2,140 @@
   "_args": [
     [
       {
-        "raw": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-117114-17308-1xbem0x/package.tgz",
+        "raw": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-117229-34377-u84vet/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-117114-17308-1xbem0x/package.tgz",
-        "spec": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-117114-17308-1xbem0x/package.tgz",
+        "rawSpec": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-117229-34377-u84vet/package.tgz",
+        "spec": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-117229-34377-u84vet/package.tgz",
         "type": "local"
       },
-      "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/apm-install-dir-117114-17308-1qabrd5"
+      "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/apm-install-dir-117229-34377-pwnj1m"
     ]
   ],
-  "_from": "../d-117114-17308-1xbem0x/package.tgz",
-  "_id": "linter@1.11.23",
+  "_from": "../d-117229-34377-u84vet/package.tgz",
+  "_id": "linter@2.1.2",
   "_inCache": true,
   "_installable": true,
   "_location": "/linter",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-117114-17308-1xbem0x/package.tgz",
+    "raw": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-117229-34377-u84vet/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-117114-17308-1xbem0x/package.tgz",
-    "spec": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-117114-17308-1xbem0x/package.tgz",
+    "rawSpec": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-117229-34377-u84vet/package.tgz",
+    "spec": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-117229-34377-u84vet/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-117114-17308-1xbem0x/package.tgz",
-  "_shasum": "e5b6b42c0e7af49a560602916c5dcaa612603788",
+  "_resolved": "file:../d-117229-34377-u84vet/package.tgz",
+  "_shasum": "374be92b2034aee5b7fe40f35aeb3dacc5edf3d3",
   "_shrinkwrap": null,
-  "_spec": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-117114-17308-1xbem0x/package.tgz",
-  "_where": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/apm-install-dir-117114-17308-1qabrd5",
+  "_spec": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/d-117229-34377-u84vet/package.tgz",
+  "_where": "/private/var/folders/9n/_gs21mq50mjgqxw3g69dhjk96n9z48/T/apm-install-dir-117229-34377-pwnj1m",
   "author": {
     "name": "steelbrain"
   },
   "bugs": {
     "url": "https://github.com/steelbrain/linter/issues"
   },
+  "configSchema": {
+    "lintPreviewTabs": {
+      "type": "boolean",
+      "description": "Lint tabs while they are still in preview status",
+      "default": true,
+      "order": 2
+    },
+    "lintOnOpen": {
+      "title": "Lint on Open",
+      "description": "Lint files automatically when they are opened",
+      "type": "boolean",
+      "default": true,
+      "order": 3
+    },
+    "lintOnChange": {
+      "title": "Lint on Change",
+      "description": "Lint files while typing, without the need to save (only for supported providers)",
+      "type": "boolean",
+      "default": true,
+      "order": 4
+    },
+    "lintOnChangeInterval": {
+      "title": "Lint on Change Interval",
+      "description": "Interval at which linting is done as you type (in ms)",
+      "type": "integer",
+      "default": 300,
+      "order": 5
+    },
+    "ignoreGlob": {
+      "title": "Ignore files matching this Glob",
+      "type": "string",
+      "default": "**/*.min.{js,css}",
+      "order": 6
+    }
+  },
   "consumedServices": {
     "linter": {
       "versions": {
-        "^1.0.0": "consumeLinter"
+        "^1.0.0": "consumeLinterLegacy",
+        "2.0.0": "consumeLinter"
       }
     },
-    "status-bar": {
+    "linter-ui": {
       "versions": {
-        "^1.0.0": "consumeStatusBar"
+        "1.0.0": "consumeUI"
       }
     }
   },
   "dependencies": {
-    "interact.js": "^1.2.5",
-    "minimatch": "^3.0.0"
+    "atom-package-deps": "^4.4.1",
+    "atom-select-list": "0.0.16",
+    "cool-trim": "^1.1.1",
+    "eslint-config-steelbrain": "^2.0.0",
+    "lodash.uniq": "^4.5.0",
+    "minimatch": "^3.0.3",
+    "sb-config-file": "^3.0.2",
+    "sb-debounce": "^1.0.1"
   },
   "description": "A Base Linter with Cow Powers",
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint-config-steelbrain": "^2.0.0",
+    "flow-bin": "^0.42.0",
+    "jasmine-fix": "^1.0.0"
+  },
   "engines": {
-    "atom": ">=1.13.0 <2.0.0"
+    "atom": ">=1.14.0 <2.0.0"
   },
   "homepage": "https://github.com/steelbrain/linter#readme",
+  "keywords": [
+    "linter"
+  ],
   "license": "MIT",
-  "main": "./lib/main",
+  "main": "./lib/index.js",
   "name": "linter",
   "optionalDependencies": {},
+  "package-deps": [
+    "linter-ui-default"
+  ],
+  "private": true,
   "providedServices": {
     "linter-indie": {
       "versions": {
-        "1.0.0": "provideIndie"
-      }
-    },
-    "linter-plus-self": {
-      "versions": {
-        "0.1.0": "provideLinter"
+        "1.0.0": "provideIndieLegacy",
+        "2.0.0": "provideIndie"
       }
     }
   },
-  "readme": "Linter\n======\n\n[![Slack Badge](https://img.shields.io/badge/chat-atom.io%20slack-blue.svg?style=flat-square)](http://atom-slack.herokuapp.com/)\n[![Build Status](https://img.shields.io/travis/atom-community/linter.svg?style=flat-square)](https://travis-ci.org/atom-community/linter)\n[![Plugin installs!](https://img.shields.io/apm/dm/linter.svg?style=flat-square)](https://atom.io/packages/linter)\n[![Package version!](https://img.shields.io/apm/v/linter.svg?style=flat-square)](https://atom.io/packages/linter)\n[![Dependencies!](https://img.shields.io/david/atom-community/Linter.svg?style=flat-square)](https://david-dm.org/atom-community/linter)\n\nLinter is a base linter provider for the Hackable [Atom Editor](http://atom.io).\n\nIt provides a top-level API to its consumer that allows them to visualize errors and other kind-of messages, easily.\n\n\n![Preview](http://g.recordit.co/13RfmirPz2.gif)\n\n#### How to / Installation\n\nInstall package through Atom or use CLI:\n\n```\n$ apm install linter\n```\n\n#### Available linters\n\n[Full linters list](http://atomlinter.github.io/)\n\n#### API Documentation\n\n[Linter API wiki](https://github.com/atom-community/linter/wiki/Linter-API)\n\n#### Performance Tuning\n\nIs linter working slow for you? Try changing the interval of inline bubble or disabling it completely and/or try disabling Line tab.\n\n#### Contribute\n\nStick to imposed codestyle:\n\n* `$ npm i -g coffeelint eslint`\n* `$ npm run lint`\n",
-  "readmeFilename": "README.md",
+  "readme": "./README.md",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/steelbrain/linter.git"
   },
   "scripts": {
-    "lint": "coffeelint lib && eslint lib"
+    "test": "(apm test) && (flow check) && (eslint . )"
   },
-  "version": "1.11.23"
+  "version": "2.1.2"
 }

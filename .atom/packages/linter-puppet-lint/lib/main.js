@@ -10,7 +10,8 @@ let errorLevel;
 let allSettings;
 
 export default {
-  activate: () => {
+  // Activate linter
+  activate() {
     const helpers = require('atom-linter');
 
     subscriptions = new CompositeDisposable();
@@ -34,7 +35,7 @@ export default {
           {
             detail: 'Please upgrade your version of puppet-lint.\n' +
               'Check the README for further information.',
-          }
+          },
         );
       } else {
         atom.config.set('linter-puppet-lint.oldVersion', false);
@@ -42,17 +43,12 @@ export default {
     });
   },
 
-  deactivate: () => {
+  deactivate() {
     subscriptions.dispose();
   },
 
-  provideLinter: () => {
-    // With the custom format the puppet-int ouput looks like this:
-    // error mongodb::service not in autoload module layout 3 7
+  provideLinter() {
     const helpers = require('atom-linter');
-    const path = require('path');
-
-    const regexLine = /^(warning|error)\s(.*)\s(\d+)\s(\d+)$/;
 
     return {
       name: 'Puppet-Lint',
@@ -60,19 +56,25 @@ export default {
       scope: 'file',
       lintOnFly: false,
       lint: (activeEditor) => {
+        // Check again if puppet-lint is too old to support column information
         if (atom.config.get('linter-puppet-lint.oldVersion') === true) {
           atom.notifications.addError(
             'You are using an old version of puppet-lint!',
             {
               detail: 'Please upgrade your version of puppet-lint.\n' +
                 'Check the README for further information.',
-            }
+            },
           );
           return [];
         }
 
+        // Setup const vars for later use
+        const path = require('path');
         const file = activeEditor.getPath();
         const cwd = path.dirname(file);
+        // With the custom format the puppet-int ouput looks like this:
+        // error mongodb::service not in autoload module layout 3 7
+        const regexLine = /^(warning|error)\s(.*)\s(\d+)\s(\d+)$/;
         const args = ['--log-format', '%{kind} %{message} %{line} %{column}', '--error-level', errorLevel];
 
         const optionsMap = require('./flags.js');
@@ -84,6 +86,7 @@ export default {
           }
         });
 
+        // Add the file to be checked to the arguments
         args.push(file);
 
         return helpers.exec(executablePath, args, { cwd, ignoreExitCode: true }).then((output) => {
@@ -92,13 +95,16 @@ export default {
             throw output;
           }
           const toReturn = [];
+
+          // Check for proper warnings and errors from stdout
           output.split(/\r?\n/).forEach((line) => {
             const matches = regexLine.exec(line);
             if (matches != null) {
               const errLine = Number.parseInt(matches[3], 10) - 1;
               const errCol = Number.parseInt(matches[4], 10) - 1;
+
               toReturn.push({
-                range: helpers.rangeFromLineNumber(activeEditor, errLine, errCol),
+                range: helpers.generateRange(activeEditor, errLine, errCol),
                 type: matches[1],
                 severity: matches[1],
                 text: matches[2],
