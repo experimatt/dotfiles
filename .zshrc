@@ -54,35 +54,38 @@ ZSH_THEME="mh"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-syntax-highlighting)
 
+
+# User configuration
+
 source $ZSH/oh-my-zsh.sh
 
-# Load rbenv if installed
+export PATH="$HOME/Library/Python/2.7/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
+
+# Initialize rbenv if installed
 if test -d $HOME/.rbenv; then
   eval "$(rbenv init -)"
 fi
 
-# Load jenv if installed
+# Initialize jenv if installed
 if test -d $HOME/.jenv; then
   eval "$(jenv init -)"
 
   export PATH="$HOME/.jenv/bin:$PATH"
-  export PATH="$HOME/Library/Python/2.7/bin:$PATH"
-  export PATH="$HOME/bin:$PATH"
   export JAVA_HOME="$HOME/.jenv/versions/`jenv version-name`"
 
   alias jenv_set_java_home='export JAVA_HOME="$HOME/.jenv/versions/`jenv version-name`"'
 fi
 
-# Load nvm if installed
+# Initialize nvm if installed
 if test -d $HOME/.nvm; then
   export NVM_DIR=~/.nvm
   [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 fi
 
-# use vim keybindings
+# Use vim keybindings
 bindkey -v # -e for emacs
 
-# User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
