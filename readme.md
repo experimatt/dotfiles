@@ -13,7 +13,7 @@ defaults write -g com.apple.swipescrolldirection -bool FALSE # trackpad scroll d
  * Displays > Slightly more space
  * Security & Privacy > Require password 5 seconds
  * Desktop & Screen Saver > Screen Saver > Hot Corners > Bottom Left: Put computer to sleep
-
+ * Keyboad > Modifier Keys... > Change Caps Lock to Esc
 
 ## Command line
 
@@ -56,7 +56,7 @@ cat ~/dotfiles/brew-list | xargs brew install
 
 ### atom
  ```
- ln -s dotfiles/.atom .atom
+ # sync to github using sync-settings package
 
  ```
 

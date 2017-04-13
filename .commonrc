@@ -1,6 +1,0 @@
-eval "$(rbenv init -)"
-
-export NVM_DIR=~/.nvm
-# export PS1="<U+1F355> :\W$ "
-
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

@@ -1,1 +1,0 @@
-notify { 'nothing wrong here': }
