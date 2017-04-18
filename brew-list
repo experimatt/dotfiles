@@ -13,9 +13,10 @@ heroku
 icu4c
 imagemagick
 maven
-nvm
+nodenv
 openssl
 phantomjs
+postgresql
 rbenv
 redis
 ruby-build

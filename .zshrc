@@ -67,6 +67,11 @@ if test -d $HOME/.rbenv; then
   eval "$(rbenv init -)"
 fi
 
+# Initialize nodenv if installed
+if test -d $HOME/.nodenv; then
+  eval "$(nodenv init -)"
+fi
+
 # Initialize jenv if installed
 if test -d $HOME/.jenv; then
   eval "$(jenv init -)"
@@ -75,12 +80,6 @@ if test -d $HOME/.jenv; then
   export JAVA_HOME="$HOME/.jenv/versions/`jenv version-name`"
 
   alias jenv_set_java_home='export JAVA_HOME="$HOME/.jenv/versions/`jenv version-name`"'
-fi
-
-# Initialize nvm if installed
-if test -d $HOME/.nvm; then
-  export NVM_DIR=~/.nvm
-  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 fi
 
 # Use vim keybindings
