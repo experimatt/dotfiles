@@ -1,5 +1,6 @@
 bash
 bash-completion
+fish
 git
 heroku
 nodenv
