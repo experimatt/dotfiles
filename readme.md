@@ -4,7 +4,7 @@
 
 ## Command line
 
-### [ssh key](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)
+### [generate ssh key](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)
   ```
 ls -al ~/.ssh                           # check for existing SSH key
 ssh-keygen -t rsa -b 4096 -C "EMAIL"    # generate new SSH key
@@ -13,15 +13,15 @@ ssh-add ~/.ssh/id_rsa                   # add SSH key to ssh-agent
 cat ~/.ssh/id_rsa.pub                   # show SSH key so you can copy to github
   ```
 
-### xcode
+### install xcode tools
 ```
- xcode-select --install   # installs xcode command line tools
+ xcode-select --install
 ```
 
-### dotfiles
+### setup dotfiles
 ```
 git clone git@github.com:experimatt/dotfiles.git
-# may need to open run curl command from https://github.com/robbyrussell/oh-my-zsh
+# may need to run curl command from https://github.com/robbyrussell/oh-my-zsh
 ln -sF dotfiles/.zshrc ~/.zshrc
 ln -sF dotfiles/zsh/.oh-my-zsh ~/.oh-my-zsh
 ln -sF dotfiles/.vimrc ~/.vimrc
@@ -29,7 +29,7 @@ source ~/.zshrc # or restart terminal
 # may need to run `git submodule update` or some variant
 ```
 
-### homebrew
+### install homebrew
 ```
 open http://brew.sh
 # run curl command to install
@@ -47,16 +47,20 @@ cat ~/dotfiles/work-cask-list | xargs brew cask install
 cat ~/dotfiles/work-brew-list | xargs brew install
 ```
 
-### atom
+### misc setup
+```
+touch ~/.hushlogin # hush last login in terminal
+```
+
+## Manual setup
+
+### atom config
  ```
  # install sync-settings and sync to github gist
 
  ```
 
-## System preferences
- ```
- touch ~/.hushlogin # hush last login in terminal
- ```
+### System preferences
 
   * Trackpad Settings > Scroll & Zoom > uncheck Scroll direction: natural
   * Show Battery Percentage
