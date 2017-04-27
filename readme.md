@@ -21,12 +21,14 @@ cat ~/.ssh/id_rsa.pub                   # show SSH key so you can copy to github
 ### setup dotfiles
 ```
 git clone git@github.com:experimatt/dotfiles.git
-# may need to run curl command from https://github.com/robbyrussell/oh-my-zsh
 ln -sF dotfiles/.zshrc ~/.zshrc
 ln -sF dotfiles/zsh/.oh-my-zsh ~/.oh-my-zsh
 ln -sF dotfiles/.vimrc ~/.vimrc
+cd dotfiles
+git submodule init
+git submodule update
+chsh -s /bin/zsh
 source ~/.zshrc # or restart terminal
-# may need to run `git submodule update` or some variant
 ```
 
 ### install homebrew
