@@ -21,14 +21,7 @@ cat ~/.ssh/id_rsa.pub                   # show SSH key so you can copy to github
 ### setup dotfiles
 ```
 git clone git@github.com:experimatt/dotfiles.git
-ln -sF dotfiles/.zshrc ~/.zshrc
-ln -sF dotfiles/zsh/.oh-my-zsh ~/.oh-my-zsh
 ln -sF dotfiles/.vimrc ~/.vimrc
-cd dotfiles
-git submodule init
-git submodule update
-chsh -s /bin/zsh
-source ~/.zshrc # or restart terminal
 ```
 
 ### install homebrew
@@ -49,6 +42,31 @@ cat ~/dotfiles/work-cask-list | xargs brew cask install
 cat ~/dotfiles/work-brew-list | xargs brew install
 ```
 
+### zsh setup
+```
+ln -sF ~/dotfiles/zsh/.zshrc ~/.zshrc
+ln -sF ~/dotfiles/zsh/.oh-my-zsh ~/.oh-my-zsh
+cd dotfiles
+git submodule init
+git submodule update
+chsh -s /bin/zsh
+source ~/.zshrc # or restart terminal
+```
+
+### fish setup
+```
+echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
+chsh -s /usr/local/bin/fish
+ln -sF ~/dotfiles/fish/config.fish ~/.config/fish/config.fish
+ln -sF ~/dotfiles/fish/functions/fish_prompt.fish ~/.config/fish/functions/fish_prompt.fish
+```
+
+### bash setup
+```
+ln -sF ~/dotfiles/bash/.bash_profile ~/.bash_profile
+ln -sF ~/dotfiles/bash/.bashrc ~/.bashrc
+```
+
 ### misc setup
 ```
 touch ~/.hushlogin # hush last login in terminal
@@ -67,8 +85,9 @@ touch ~/.hushlogin # hush last login in terminal
   * Trackpad Settings > Scroll & Zoom > uncheck Scroll direction: natural
   * Show Battery Percentage
   * Finder Preferences > Change sidebar favorites
-  * Displays > Slightly more space (depends on screen size)
-  * Security & Privacy > Require password 5 seconds
-  * Desktop & Screen Saver > Screen Saver > Hot Corners > Bottom Left: Put computer to sleep
+  * Security & Privacy > Require password 5 seconds after sleep or screen saver
+  * Desktop & Screen Saver > Screen Saver > Hot Corners > Bottom Left: Put display to sleep
   * Keyboad > Modifier Keys... > Change Caps Lock to Esc
+  * Displays > Slightly more space (depends on screen size)
   * Displays > Nightshift > Custom > 10:00 PM to 7:00 AM
+  
