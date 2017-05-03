@@ -44,8 +44,8 @@ cat ~/dotfiles/work-brew-list | xargs brew install
 
 ### zsh setup
 ```
-ln -sF ~/dotfiles/zsh/.zshrc ~/.zshrc
-ln -sF ~/dotfiles/zsh/.oh-my-zsh ~/.oh-my-zsh
+ln -sF dotfiles/zsh/.zshrc ~/.zshrc
+ln -sF dotfiles/zsh/.oh-my-zsh ~/.oh-my-zsh
 cd dotfiles
 git submodule init
 git submodule update
@@ -57,14 +57,14 @@ source ~/.zshrc # or restart terminal
 ```
 echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
 chsh -s /usr/local/bin/fish
-ln -sF ~/dotfiles/fish/config.fish ~/.config/fish/config.fish
-ln -sF ~/dotfiles/fish/functions/fish_prompt.fish ~/.config/fish/functions/fish_prompt.fish
+ln -sF dotfiles/fish/config.fish ~/.config/fish/config.fish
+ln -sF dotfiles/fish/functions/fish_prompt.fish ~/.config/fish/functions/fish_prompt.fish
 ```
 
 ### bash setup
 ```
-ln -sF ~/dotfiles/bash/.bash_profile ~/.bash_profile
-ln -sF ~/dotfiles/bash/.bashrc ~/.bashrc
+ln -sF dotfiles/bash/.bash_profile ~/.bash_profile
+ln -sF dotfiles/bash/.bashrc ~/.bashrc
 ```
 
 ### misc setup
@@ -77,7 +77,6 @@ touch ~/.hushlogin # hush last login in terminal
 ### atom config
  ```
  # install sync-settings and sync to github gist
-
  ```
 
 ### System preferences
