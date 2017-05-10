@@ -70,6 +70,7 @@ ln -sF dotfiles/bash/.bashrc ~/.bashrc
 ### misc setup
 ```
 touch ~/.hushlogin # hush last login in terminal
+jenv enable-plugin export # automatically sets JAVA_HOME on directory change
 ```
 
 ## Manual setup
