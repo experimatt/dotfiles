@@ -13,12 +13,8 @@ status --is-interactive; and source (nodenv init -|psub)
 # Python (work only)
 # set -x PATH $PATH $HOME/Library/Python/2.7/bin
 
+
 # Initialize jenv (work only)
-# if test -d $HOME/.jenv; then
-#   eval "$(jenv init -)"
-# 
-#   export PATH="$HOME/.jenv/bin:$PATH"
-#   export JAVA_HOME="$HOME/.jenv/versions/`jenv version-name`"
-# 
-#   alias jenv_set_java_home='export JAVA_HOME="$HOME/.jenv/versions/`jenv version-name`"'
-# fi
+# status --is-interactive; and source (jenv init -|psub)
+# set PATH $HOME/.jenv/bin $PATH
+# jenv enable-plugin export # automatically sets JAVA_HOME on directory change

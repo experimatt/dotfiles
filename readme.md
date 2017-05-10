@@ -57,8 +57,9 @@ source ~/.zshrc # or restart terminal
 ```
 echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
 chsh -s /usr/local/bin/fish
-ln -sF dotfiles/fish/config.fish ~/.config/fish/config.fish
-ln -sF dotfiles/fish/functions/fish_prompt.fish ~/.config/fish/functions/fish_prompt.fish
+ln -sF ~/dotfiles/fish/config.fish ~/.config/fish/config.fish
+ln -sF ~/dotfiles/fish/functions ~/.config/fish
+
 ```
 
 ### bash setup
@@ -70,7 +71,6 @@ ln -sF dotfiles/bash/.bashrc ~/.bashrc
 ### misc setup
 ```
 touch ~/.hushlogin # hush last login in terminal
-jenv enable-plugin export # automatically sets JAVA_HOME on directory change
 ```
 
 ## Manual setup
