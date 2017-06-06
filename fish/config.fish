@@ -9,6 +9,7 @@ status --is-interactive; and source (rbenv init -|psub)
 
 # Initialize nodenv
 status --is-interactive; and source (nodenv init -|psub)
+set fish_user_paths (npm bin)
 
 # Initialize jenv & java (work only)
 if test -d ~/.jenv
