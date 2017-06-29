@@ -25,5 +25,8 @@ if test -d ~/.jenv
   set -x JRUBY_OPTS "--dev -J-Xmx2048m"
 end
 
+# add ./bin to PATH
+set -x PATH ./bin $PATH
+
 # Python (work only)
 # set -x PATH $PATH $HOME/Library/Python/2.7/bin
