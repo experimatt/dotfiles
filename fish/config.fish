@@ -9,7 +9,7 @@ status --is-interactive; and source (rbenv init -|psub)
 
 # Initialize nodenv
 status --is-interactive; and source (nodenv init -|psub)
-set fish_user_paths (npm bin)
+# set fish_user_paths (npm bin)
 
 # Initialize jenv & java (work only)
 if test -d ~/.jenv
@@ -29,4 +29,8 @@ end
 set -x PATH ./bin $PATH
 
 # Python (work only)
-# set -x PATH $PATH $HOME/Library/Python/2.7/bin
+if test -d ~/.virtualenvs
+  set -x PATH $PATH $HOME/Library/Python/2.7/bin
+  set -x WORKON_HOME $HOME/.python/virtualenvwrapper
+  set -x PROJECT_HOME $HOME/projects
+end

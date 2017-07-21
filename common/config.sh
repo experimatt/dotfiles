@@ -1,4 +1,4 @@
-export PATH="$HOME/Library/Python/2.7/bin:$PATH"
+export PROJECT_HOME="$HOME/projects"
 export PATH="$HOME/bin:$PATH"
 export PATH="./bin:$PATH"
 
@@ -27,4 +27,11 @@ if test -d $HOME/.jenv; then
   export OCI_DIR=$ORACLE_HOME
   export PATH=$ORACLE_HOME:$PATH
   export JRUBY_OPTS="--dev -J-Xmx2048m"
+fi
+
+# Initialize python stuff
+if test -d .virtualenvs; then
+  export PATH="$HOME/Library/Python/2.7/bin:$PATH"
+  export WORKON_HOME="$HOME/.python/virtualenvwrapper"
+  source virtualenvwrapper.sh
 fi
