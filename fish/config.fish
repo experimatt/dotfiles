@@ -34,3 +34,14 @@ if test -d ~/.virtualenvs
   set -x WORKON_HOME $HOME/.python/virtualenvwrapper
   set -x PROJECT_HOME $HOME/projects
 end
+
+# Git shortcuts
+set -g fish_user_abbreviations 'ga=git add' \
+                               'gb=git branch -v' \
+                               'gc=git commit' \
+                               'gco=git checkout' \
+                               'gd=git diff' \
+                               'gs=git status' \
+                               'gpl=git pull' \
+                               'gps=git push' \
+                               'gap=git add -p'
