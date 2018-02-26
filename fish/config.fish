@@ -21,6 +21,10 @@ if test -d ~/.jenv
 
   # ORACLE_HOME
   set -x JRUBY_OPTS "--dev -J-Xmx2048m"
+
+  # add mysql to path (work only)
+  set -x PATH /usr/local/opt/mysql@5.6/bin $PATH
+
 end
 
 # add ./bin to PATH
