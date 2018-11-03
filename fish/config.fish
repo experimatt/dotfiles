@@ -37,6 +37,15 @@ if test -d ~/.virtualenvs
   set -x PROJECT_HOME $HOME/projects
 end
 
+# Go (home machine)
+if test -d ~/go
+  set -x GOPATH $HOME/go
+  set -x PATH $PATH $GOPATH/bin
+
+  # single line option that doesn't set $GOPATH
+  # set -x PATH $PATH (go env GOPATH)/bin
+end
+
 # Git shortcuts
 set -g fish_user_abbreviations 'ga=git add' \
                                'gb=git branch -v' \
