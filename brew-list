@@ -9,5 +9,3 @@ rbenv
 the_silver_searcher
 vim
 wget
-zsh
-zsh-completions
