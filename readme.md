@@ -59,6 +59,12 @@ ln -sF dotfiles/bash/.bashrc ~/.bashrc
 touch ~/.hushlogin # hush last login in terminal
 ```
 
+### git setup
+```
+cp ~/dotfiles/.gitconfig ~/.gitconfig
+# open the file and update email address
+```
+
 ## Manual setup
 
 ### atom config
@@ -70,11 +76,6 @@ touch ~/.hushlogin # hush last login in terminal
   * Trackpad Settings > Scroll & Zoom > uncheck Scroll direction: natural
   * Keyboard > Key Repeat > Fast
   * Keyboard > Delay Until Repeat > Short
-    - these terminal commands may also do the same thing
-    ```
-    defaults write NSGlobalDomain KeyRepeat -int 0
-    defaults write NSGlobalDomain InitialKeyRepeat -int 15
-    ```
   * General > Use dark menu bar and Dock
   * Show Battery Percentage
   * Finder Preferences > Change sidebar favorites
