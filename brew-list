@@ -3,6 +3,7 @@ bash-completion
 fish
 git
 heroku/brew/heroku
+node
 nodenv
 postgresql
 rbenv
@@ -10,3 +11,4 @@ the_silver_searcher
 tldr
 vim
 wget
+yarn
