@@ -36,27 +36,13 @@ brew tap caskroom/versions
 ```
 cat ~/dotfiles/cask-list | xargs brew cask install
 cat ~/dotfiles/brew-list | xargs brew install
-
-# if on a work machine
-cat ~/dotfiles/work-cask-list | xargs brew cask install
-cat ~/dotfiles/work-brew-list | xargs brew install
-```
-
-### zsh setup
-```
-ln -sF dotfiles/zsh/.zshrc ~/.zshrc
-ln -sF dotfiles/zsh/.oh-my-zsh ~/.oh-my-zsh
-cd dotfiles
-git submodule init
-git submodule update
-chsh -s /bin/zsh
-source ~/.zshrc # or restart terminal
 ```
 
 ### fish setup
 ```
 echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
 chsh -s /usr/local/bin/fish
+mkdir -p .config/fish
 ln -sF ~/dotfiles/fish/config.fish ~/.config/fish/config.fish
 ln -sF ~/dotfiles/fish/functions ~/.config/fish
 
@@ -76,18 +62,38 @@ touch ~/.hushlogin # hush last login in terminal
 ## Manual setup
 
 ### atom config
- ```
- # install sync-settings and sync to github gist
- ```
+* install sync-settings and sync to [github gist](https://gist.github.com/experimatt/9ac9a9855962fffe63a9a7f845937f51)
+
 
 ### System preferences
 
   * Trackpad Settings > Scroll & Zoom > uncheck Scroll direction: natural
+  * Keyboard > Key Repeat > Fast
+  * Keyboard > Delay Until Repeat > Short
+    - these terminal commands may also do the same thing
+    ```
+    defaults write NSGlobalDomain KeyRepeat -int 0
+    defaults write NSGlobalDomain InitialKeyRepeat -int 15
+    ```
+  * General > Use dark menu bar and Dock
   * Show Battery Percentage
   * Finder Preferences > Change sidebar favorites
   * Security & Privacy > Require password 5 seconds after sleep or screen saver
-  * Desktop & Screen Saver > Screen Saver > Hot Corners > Bottom Left: Put display to sleep
+  * Desktop & Screen Saver > Screen Saver > Hot Corners > Bottom Left: Put Display to Sleep
   * Keyboad > Modifier Keys... > Change Caps Lock to Esc
   * Displays > Slightly more space (depends on screen size)
   * Displays > Nightshift > Custom > 10:00 PM to 7:00 AM
-  
+
+
+## No longer used
+
+### zsh setup
+```
+ln -sF dotfiles/zsh/.zshrc ~/.zshrc
+ln -sF dotfiles/zsh/.oh-my-zsh ~/.oh-my-zsh
+cd dotfiles
+git submodule init
+git submodule update
+chsh -s /bin/zsh
+source ~/.zshrc # or restart terminal
+```
