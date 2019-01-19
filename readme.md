@@ -45,7 +45,6 @@ chsh -s /usr/local/bin/fish
 mkdir -p .config/fish
 ln -sF ~/dotfiles/fish/config.fish ~/.config/fish/config.fish
 ln -sF ~/dotfiles/fish/functions ~/.config/fish
-
 ```
 
 ### bash setup
