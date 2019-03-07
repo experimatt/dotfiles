@@ -5,7 +5,7 @@
 	rebase = false
 	ff = only
 [merge]
-	ff = only
+	ff = false
 [log]
 	decorate = auto
 [tag]
@@ -17,5 +17,5 @@
 	showtool = "!sh -c 'if [ -z $1 ]; then REVISION=HEAD; else REVISION=$1; fi; git difftool $REVISION~ $REVISION' -"
 [core]
 	editor = atom --wait
- [rebase]
+[rebase]
   autosquash = true
