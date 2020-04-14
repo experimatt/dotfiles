@@ -64,11 +64,13 @@ cp ~/dotfiles/.gitconfig ~/.gitconfig
 # open the file and update email address
 ```
 
+### vscode setup
+Haven't tested this yet - can probably just use a settings-sync extension instead.
+```
+ln -sF ~/dotfiles/vscode/setings.json ~/Library/Application\ Support/Code/User/settings.json
+```
+
 ## Manual setup
-
-### atom config
-* install sync-settings and sync to [github gist](https://gist.github.com/experimatt/9ac9a9855962fffe63a9a7f845937f51)
-
 
 ### System preferences
 
@@ -86,6 +88,9 @@ cp ~/dotfiles/.gitconfig ~/.gitconfig
 
 
 ## No longer used
+
+### atom config
+* install sync-settings and sync to [github gist](https://gist.github.com/experimatt/9ac9a9855962fffe63a9a7f845937f51)
 
 ### zsh setup
 ```
