@@ -67,7 +67,7 @@ cp ~/dotfiles/.gitconfig ~/.gitconfig
 ### vscode setup
 Haven't tested this yet - can probably just use a settings-sync extension instead.
 ```
-ln -sF ~/dotfiles/vscode/setings.json ~/Library/Application\ Support/Code/User/settings.json
+ln -sF ~/dotfiles/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
 ```
 
 ## Manual setup
