@@ -1,5 +1,4 @@
 {
-  "workbench.colorTheme": "Base16 Tomorrow",
   "window.zoomLevel": 0,
   "atomKeymap.promptV3Features": true,
   "editor.multiCursorModifier": "ctrlCmd",
@@ -32,9 +31,12 @@
     "terminal.ansiWhite": "#bbbbbb",
     "terminal.ansiYellow": "#bbbb00"
   },
-  "editor.wordWrap": "wordWrapColumn",
   "editor.wordWrapColumn": 95,
   "html.format.wrapLineLength": 95,
   "workbench.preferredDarkColorTheme": "Base16 Tomorrow",
-  "window.titleBarStyle": "native"
+  "window.titleBarStyle": "native",
+  "sync.gist": "14de14dca09bea509e9a2d5cf0410ae3",
+  "editor.tokenColorCustomizations": null,
+  "editor.fontSize": 13,
+  "workbench.colorTheme": "Base16 Tomorrow"
 }
