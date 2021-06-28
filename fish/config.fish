@@ -40,10 +40,9 @@ alias bundle-ag="bundle show --paths | grep '/gems/' | xargs ag"
 status --is-interactive; and source (rbenv init -|psub)
 status --is-interactive; and source (nodenv init -|psub)
 
-# Initialize jenv & java (work only)
-if test -d ~/.jenv
-  set -x JAVA_HOME (jenv javahome)
-  alias jenv_set_java_home='export JAVA_HOME=(jenv javahome)'
+# Initialize asdf if present
+if test -d /usr/local/opt/asdf
+  source /usr/local/opt/asdf/asdf.fish
 end
 
 # add ./bin to PATH

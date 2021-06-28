@@ -73,6 +73,21 @@ cp ~/dotfiles/.gitconfig ~/.gitconfig
   [github gist](https://gist.github.com/experimatt/9ac9a9855962fffe63a9a7f845937f51)
 ```
 
+### version management
+
+#### [asdf](https://asdf-vm.com/#/core-manage-asdf) (experimental)
+```
+brew install asdf
+brew plugin add ruby
+brew plugin add nodejs
+
+```
+
+#### rbenv & nodenv
+```
+brew install rbenv nodenv
+```
+
 ## Manual setup
 
 ### System preferences
