@@ -28,13 +28,14 @@ ln -sF dotfiles/.vimrc ~/.vimrc
 ```
 open http://brew.sh
 # run curl command to install
-brew tap caskroom/cask
-brew tap caskroom/versions
+brew tap homebrew/cask
+brew tap homebrew/versions
+brew tap heroku/brew
 ```
 
 ### brew install
 ```
-cat ~/dotfiles/cask-list | xargs brew cask install
+cat ~/dotfiles/cask-list | xargs brew install
 cat ~/dotfiles/brew-list | xargs brew install
 ```
 
@@ -64,10 +65,12 @@ cp ~/dotfiles/.gitconfig ~/.gitconfig
 # open the file and update email address
 ```
 
-### vscode setup
-Haven't tested this yet - can probably just use a settings-sync extension instead.
+### atom config
 ```
-ln -sF ~/dotfiles/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
+# open atom
+# install sync-settings
+# enter gist ID 9ac9a9855962fffe63a9a7f845937f51
+  [github gist](https://gist.github.com/experimatt/9ac9a9855962fffe63a9a7f845937f51)
 ```
 
 ## Manual setup
@@ -77,20 +80,24 @@ ln -sF ~/dotfiles/vscode/settings.json ~/Library/Application\ Support/Code/User/
   * Trackpad Settings > Scroll & Zoom > uncheck Scroll direction: natural
   * Keyboard > Key Repeat > Fast
   * Keyboard > Delay Until Repeat > Short
-  * General > Use dark menu bar and Dock
-  * Show Battery Percentage
+  * Keyboard > Modifier Keys... > Change Caps Lock to Esc
+  * General > Dark theme
+  * Dock & Menu Bar > Battery > Show Percentage
+  * Touch ID > Add Fingerprint
   * Finder Preferences > Change sidebar favorites
   * Security & Privacy > Require password 5 seconds after sleep or screen saver
-  * Desktop & Screen Saver > Screen Saver > Hot Corners > Bottom Left: Put Display to Sleep
-  * Keyboad > Modifier Keys... > Change Caps Lock to Esc
   * Displays > Slightly more space (depends on screen size)
   * Displays > Nightshift > Custom > 10:00 PM to 7:00 AM
 
 
-## No longer used
+## Not used
 
-### atom config
-* install sync-settings and sync to [github gist](https://gist.github.com/experimatt/9ac9a9855962fffe63a9a7f845937f51)
+### vscode setup
+Haven't tested this yet - can probably just use an extension to ssync settingsinstead.
+
+```
+ln -sF ~/dotfiles/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
+```
 
 ### zsh setup
 ```
