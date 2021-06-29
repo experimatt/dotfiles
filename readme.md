@@ -80,7 +80,7 @@ cp ~/dotfiles/.gitconfig ~/.gitconfig
 brew install asdf
 brew plugin add ruby
 brew plugin add nodejs
-
+ln -sF dotfiles/.asdfrc ~/.asdfrc
 ```
 
 #### rbenv & nodenv
