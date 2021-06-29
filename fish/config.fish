@@ -36,12 +36,18 @@ set fish_pager_color_progress brwhite --background=cyan
 # helpful commands
 alias bundle-ag="bundle show --paths | grep '/gems/' | xargs ag"
 
-# Initialize rbenv & nodenv
-status --is-interactive; and source (rbenv init -|psub)
-status --is-interactive; and source (nodenv init -|psub)
+# Initialize rbenv if present
+if test (which rbenv)
+  status --is-interactive; and source (rbenv init -|psub)
+end
+
+# Initialize nodenv if present
+if test (which nodenv)
+  status --is-interactive; and source (nodenv init -|psub)
+end
 
 # Initialize asdf if present
-if test -d /usr/local/opt/asdf
+if test (which asdf)
   source /usr/local/opt/asdf/asdf.fish
 end
 
