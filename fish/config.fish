@@ -48,7 +48,7 @@ end
 
 # Initialize asdf if present
 if test (which asdf)
-  source /usr/local/opt/asdf/asdf.fish
+  source (brew --prefix asdf)/asdf.fish
 end
 
 # add ./bin to PATH

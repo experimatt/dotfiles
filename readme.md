@@ -54,6 +54,17 @@ ln -sF dotfiles/bash/.bash_profile ~/.bash_profile
 ln -sF dotfiles/bash/.bashrc ~/.bashrc
 ```
 
+### zsh setup (if using)
+```
+ln -sF dotfiles/zsh/.zshrc ~/.zshrc
+ln -sF dotfiles/zsh/.oh-my-zsh ~/.oh-my-zsh
+cd dotfiles
+git submodule init
+git submodule update
+chsh -s /bin/zsh
+source ~/.zshrc # or restart terminal
+```
+
 ### misc setup
 ```
 touch ~/.hushlogin # hush last login in terminal
@@ -112,15 +123,4 @@ Haven't tested this yet - can probably just use an extension to ssync settingsin
 
 ```
 ln -sF ~/dotfiles/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
-```
-
-### zsh setup
-```
-ln -sF dotfiles/zsh/.zshrc ~/.zshrc
-ln -sF dotfiles/zsh/.oh-my-zsh ~/.oh-my-zsh
-cd dotfiles
-git submodule init
-git submodule update
-chsh -s /bin/zsh
-source ~/.zshrc # or restart terminal
 ```
