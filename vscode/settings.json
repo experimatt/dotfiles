@@ -31,9 +31,9 @@
     "terminal.ansiWhite": "#bbbbbb",
     "terminal.ansiYellow": "#bbbb00",
     // use to change statusbar color if theme isn't installed
-    // "statusBar.background" : "#303030",
-    // "statusBar.noFolderBackground" : "#222225",
-    // "statusBar.debuggingBackground": "#511f1f"
+    // "statusBar.background" : "#222225",
+    "statusBar.noFolderBackground" : "#222225",
+    "statusBar.debuggingBackground": "#511f1f"
   },
   "editor.wordWrapColumn": 95,
   "html.format.wrapLineLength": 95,
@@ -42,5 +42,6 @@
   "sync.gist": "14de14dca09bea509e9a2d5cf0410ae3",
   "editor.fontSize": 13,
   "workbench.settings.editor": "json",
-  "workbench.colorTheme": "Base16 Tomorrow Dark"
+  "workbench.colorTheme": "Base16 Tomorrow Dark",
+  "terminal.external.osxExec": "iTerm.app"
 }
