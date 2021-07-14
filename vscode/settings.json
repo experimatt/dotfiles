@@ -10,6 +10,7 @@
   "diffEditor.renderSideBySide": true,
   "workbench.statusBar.visible": true,
   "workbench.colorCustomizations": {
+
     "terminal.background": "#000000",
     "terminal.foreground": "#bbbbbb",
     "terminalCursor.background": "#ffffff",
@@ -41,7 +42,8 @@
   "window.titleBarStyle": "native",
   "sync.gist": "14de14dca09bea509e9a2d5cf0410ae3",
   "editor.fontSize": 13,
-  "workbench.settings.editor": "json",
   "workbench.colorTheme": "Base16 Tomorrow Dark",
-  "terminal.external.osxExec": "iTerm.app"
+  "terminal.external.osxExec": "iTerm.app",
+  "elmLS.elmReviewDiagnostics": "warning",
+  "elmLS.disableElmLSDiagnostics": true
 }
