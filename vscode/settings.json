@@ -5,11 +5,10 @@
   "emmet.triggerExpansionOnTab": true,
   "editor.tabSize": 2,
   "editor.detectIndentation": false,
-  "workbench.activityBar.visible": false,
   "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.renderSideBySide": true,
-  "workbench.statusBar.visible": true,
   "workbench.colorCustomizations": {
+
 
     "terminal.background": "#000000",
     "terminal.foreground": "#bbbbbb",
@@ -44,6 +43,10 @@
   "editor.fontSize": 13,
   "workbench.colorTheme": "Base16 Tomorrow Dark",
   "terminal.external.osxExec": "iTerm.app",
+  "elmLS.disableElmLSDiagnostics": true,
   "elmLS.elmReviewDiagnostics": "warning",
-  "elmLS.disableElmLSDiagnostics": true
+  "editor.renderWhitespace": "none",
+  "editor.renderControlCharacters": true,
+  "editor.minimap.enabled": false,
+  "workbench.activityBar.visible": false,
 }
