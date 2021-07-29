@@ -1,5 +1,4 @@
 {
-  "window.zoomLevel": 0,
   "atomKeymap.promptV3Features": true,
   "editor.multiCursorModifier": "ctrlCmd",
   "emmet.triggerExpansionOnTab": true,
@@ -8,8 +7,6 @@
   "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.renderSideBySide": true,
   "workbench.colorCustomizations": {
-
-
     "terminal.background": "#000000",
     "terminal.foreground": "#bbbbbb",
     "terminalCursor.background": "#ffffff",
@@ -33,7 +30,8 @@
     // use to change statusbar color if theme isn't installed
     // "statusBar.background" : "#222225",
     "statusBar.noFolderBackground" : "#222225",
-    "statusBar.debuggingBackground": "#511f1f"
+    "statusBar.debuggingBackground": "#511f1f",
+    "tree.indentGuidesStroke": "#008070"
   },
   "editor.wordWrapColumn": 95,
   "html.format.wrapLineLength": 95,
@@ -49,4 +47,5 @@
   "editor.renderControlCharacters": true,
   "editor.minimap.enabled": false,
   "workbench.activityBar.visible": false,
+  "workbench.tree.indent": 28
 }
