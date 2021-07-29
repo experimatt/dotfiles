@@ -16,6 +16,6 @@
 	dt = difftool
 	showtool = "!sh -c 'if [ -z $1 ]; then REVISION=HEAD; else REVISION=$1; fi; git difftool $REVISION~ $REVISION' -"
 [core]
-	editor = atom --wait
+	editor = code --wait
 [rebase]
   autosquash = true
