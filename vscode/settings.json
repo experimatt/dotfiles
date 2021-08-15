@@ -47,7 +47,7 @@
   "editor.renderControlCharacters": true,
   "editor.minimap.enabled": false,
   "workbench.activityBar.visible": false,
-  "workbench.tree.indent": 28,
+  "workbench.tree.indent": 24,
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
