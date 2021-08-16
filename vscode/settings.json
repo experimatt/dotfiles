@@ -48,7 +48,12 @@
   "editor.minimap.enabled": false,
   "workbench.activityBar.visible": false,
   "workbench.tree.indent": 24,
+  "diffEditor.codeLens": true,
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.fontLigatures": null
 }
