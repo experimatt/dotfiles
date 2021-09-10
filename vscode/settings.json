@@ -55,5 +55,7 @@
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "editor.fontLigatures": null
+  "editor.fontLigatures": null,
+  "ruby.intellisense": "rubyLocate",
+  "workbench.statusBar.visible": false
 }
