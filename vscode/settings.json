@@ -57,5 +57,7 @@
   },
   "editor.fontLigatures": null,
   "ruby.intellisense": "rubyLocate",
-  "workbench.statusBar.visible": false
+  "workbench.statusBar.visible": false,
+  "security.workspace.trust.untrustedFiles": "open",
+  "editor.inlineSuggest.enabled": true
 }
