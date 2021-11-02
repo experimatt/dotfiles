@@ -28,12 +28,18 @@ ln -sF dotfiles/.vimrc ~/.vimrc
 ```
 open http://brew.sh
 # run curl command to install
+# run brew commands from output to add Homebrew to your path
+#   eval ... >> /Users/[username]/.zprofile
+#   eval "$(/opt/homebrew/bin/brew shellenv)"
 brew tap homebrew/cask
-brew tap homebrew/versions
 brew tap heroku/brew
 ```
 
+TODO: Update readme instructions to account for `.zprofile` being the default instead of `.bash_profile`.
+
 ### brew install
+Review cask-list and brew-list before running.
+
 ```
 cat ~/dotfiles/cask-list | xargs brew install
 cat ~/dotfiles/brew-list | xargs brew install
