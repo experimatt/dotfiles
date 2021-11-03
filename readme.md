@@ -35,7 +35,7 @@ brew tap homebrew/cask
 brew tap heroku/brew
 ```
 
-TODO: Update readme instructions to account for `.zprofile` being the default instead of `.bash_profile`.
+Note: As of Homebrew 3.0.0 the default installation on an M1 machine is going to be the Apple Silicon version and will be installed to `/opt/homebrew`.
 
 ### brew install
 Review cask-list and brew-list before running.
@@ -45,10 +45,14 @@ cat ~/dotfiles/cask-list | xargs brew install
 cat ~/dotfiles/brew-list | xargs brew install
 ```
 
+## Terminal setup
+
 ### fish setup
+New path is `/opt/homebrew/bin/fish`. Used to be `/usr/local/bin/fish`.
+
 ```
-echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
-chsh -s /usr/local/bin/fish
+echo "/opt/homebrew/bin/fish" | sudo tee -a /etc/shells
+chsh -s /opt/homebrew/bin/fish
 mkdir -p .config/fish
 ln -sF ~/dotfiles/fish/config.fish ~/.config/fish/config.fish
 ln -sF ~/dotfiles/fish/functions ~/.config/fish
@@ -61,6 +65,7 @@ ln -sF dotfiles/bash/.bashrc ~/.bashrc
 ```
 
 ### zsh setup (if using)
+
 ```
 ln -sF dotfiles/zsh/.zshrc ~/.zshrc
 ln -sF dotfiles/zsh/.oh-my-zsh ~/.oh-my-zsh
@@ -82,12 +87,11 @@ cp ~/dotfiles/.gitconfig ~/.gitconfig
 # open the file and update email address
 ```
 
-### atom config
+### vscode setup
+Haven't tested this yet - can probably just use an extension to ssync settingsinstead.
+
 ```
-# open atom
-# install sync-settings
-# enter gist ID 9ac9a9855962fffe63a9a7f845937f51
-  [github gist](https://gist.github.com/experimatt/9ac9a9855962fffe63a9a7f845937f51)
+ln -sF ~/dotfiles/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
 ```
 
 ### version management
@@ -122,11 +126,19 @@ brew install rbenv nodenv
   * Displays > Nightshift > Custom > 10:00 PM to 7:00 AM
 
 
-## Not used
+## No longer used
 
-### vscode setup
-Haven't tested this yet - can probably just use an extension to ssync settingsinstead.
+### atom config
+```
+# open atom
+# install sync-settings
+# enter gist ID 9ac9a9855962fffe63a9a7f845937f51
+  [github gist](https://gist.github.com/experimatt/9ac9a9855962fffe63a9a7f845937f51)
+```
 
-```
-ln -sF ~/dotfiles/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
-```
+
+## 2021-11 Notes from M1 Max MBP setup
+* TODO: Update readme instructions to account for `.zprofile` being the default instead of `.bash_profile`.
+* Install Rosetta after brew & brew cask install
+* 1Password 6 + classic extension
+* New homebrew path starts with `/opt/homebrew` now (instead of `/usr/local`).
