@@ -59,12 +59,15 @@ ln -sF ~/dotfiles/fish/functions ~/.config/fish
 ```
 
 ### bash setup
+TODO: Re-do this section if needed
+
 ```
 ln -sF dotfiles/bash/.bash_profile ~/.bash_profile
 ln -sF dotfiles/bash/.bashrc ~/.bashrc
 ```
 
 ### zsh setup (if using)
+TODO: Re-do this section
 
 ```
 ln -sF dotfiles/zsh/.zshrc ~/.zshrc
@@ -88,43 +91,43 @@ cp ~/dotfiles/.gitconfig ~/.gitconfig
 ```
 
 ### vscode setup
-Haven't tested this yet - can probably just use an extension to ssync settingsinstead.
+Sign into github to sync vscode settings
+
+STOPPED HERE
 
 ```
 ln -sF ~/dotfiles/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
 ```
 
 ### version management
+If using asdf
 
 #### [asdf](https://asdf-vm.com/#/core-manage-asdf) (experimental)
 ```
-brew install asdf
+brew install asdf # if not already installed
 brew plugin add ruby
 brew plugin add nodejs
 ln -sF dotfiles/.asdfrc ~/.asdfrc
-```
-
-#### rbenv & nodenv
-```
-brew install rbenv nodenv
 ```
 
 ## Manual setup
 
 ### System preferences
 
-  * Trackpad Settings > Scroll & Zoom > uncheck Scroll direction: natural
+  * Trackpad Settings > Scroll & Zoom > uncheck "Scroll direction: natural"
   * Keyboard > Key Repeat > Fast
   * Keyboard > Delay Until Repeat > Short
   * Keyboard > Modifier Keys... > Change Caps Lock to Esc
-  * General > Dark theme
   * Dock & Menu Bar > Battery > Show Percentage
-  * Touch ID > Add Fingerprint
   * Finder Preferences > Change sidebar favorites
+
+  STOPPED HERE
+
   * Security & Privacy > Require password 5 seconds after sleep or screen saver
   * Displays > Slightly more space (depends on screen size)
   * Displays > Nightshift > Custom > 10:00 PM to 7:00 AM
-
+  * General > Dark theme
+  * Touch ID > Add Fingerprint
 
 ## No longer used
 
@@ -136,6 +139,11 @@ brew install rbenv nodenv
   [github gist](https://gist.github.com/experimatt/9ac9a9855962fffe63a9a7f845937f51)
 ```
 
+#### rbenv & nodenv
+If using rbenv and nodenv
+```
+brew install rbenv nodenv
+```
 
 ## 2021-11 Notes from M1 Max MBP setup
 * TODO: Update readme instructions to account for `.zprofile` being the default instead of `.bash_profile`.
