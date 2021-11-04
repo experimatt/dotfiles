@@ -32,10 +32,9 @@ open http://brew.sh
 #   eval ... >> /Users/[username]/.zprofile
 #   eval "$(/opt/homebrew/bin/brew shellenv)"
 brew tap homebrew/cask
+brew tap homebrew/cask-versions
 brew tap heroku/brew
 ```
-
-Note: As of Homebrew 3.0.0 the default installation on an M1 machine is going to be the Apple Silicon version and will be installed to `/opt/homebrew`.
 
 ### brew install
 Review cask-list and brew-list before running.
@@ -93,20 +92,13 @@ cp ~/dotfiles/.gitconfig ~/.gitconfig
 ### vscode setup
 Sign into github to sync vscode settings
 
-STOPPED HERE
-
-```
-ln -sF ~/dotfiles/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
-```
-
 ### version management
-If using asdf
 
-#### [asdf](https://asdf-vm.com/#/core-manage-asdf) (experimental)
+#### [asdf](https://asdf-vm.com/#/core-manage-asdf)
 ```
 brew install asdf # if not already installed
-brew plugin add ruby
-brew plugin add nodejs
+asdf plugin add rubyw
+asdf plugin add nodejs
 ln -sF dotfiles/.asdfrc ~/.asdfrc
 ```
 
@@ -119,15 +111,16 @@ ln -sF dotfiles/.asdfrc ~/.asdfrc
   * Keyboard > Delay Until Repeat > Short
   * Keyboard > Modifier Keys... > Change Caps Lock to Esc
   * Dock & Menu Bar > Battery > Show Percentage
+  * Spotlight > Search results > Uncheck "Siri Suggestions"
+  * Sound > Uncheck "Play user interface sound effects"
   * Finder Preferences > Change sidebar favorites
-
-  STOPPED HERE
-
   * Security & Privacy > Require password 5 seconds after sleep or screen saver
-  * Displays > Slightly more space (depends on screen size)
   * Displays > Nightshift > Custom > 10:00 PM to 7:00 AM
+
+  Optional
   * General > Dark theme
   * Touch ID > Add Fingerprint
+  * Displays > Slightly more space (optional, depends on screen size)
 
 ## No longer used
 
@@ -140,9 +133,15 @@ ln -sF dotfiles/.asdfrc ~/.asdfrc
 ```
 
 #### rbenv & nodenv
-If using rbenv and nodenv
 ```
 brew install rbenv nodenv
+```
+
+### vscode setup
+2021-11-03 Note to future Matt: delete this in the future if the symlink isn't needed
+
+```
+ln -sF ~/dotfiles/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
 ```
 
 ## 2021-11 Notes from M1 Max MBP setup
@@ -150,3 +149,12 @@ brew install rbenv nodenv
 * Install Rosetta after brew & brew cask install
 * 1Password 6 + classic extension
 * New homebrew path starts with `/opt/homebrew` now (instead of `/usr/local`).
+  - Note: As of Homebrew 3.0.0 the default installation on an M1 machine is going to be the Apple Silicon version and will be installed to `/opt/homebrew`.
+  - output from installing brew:
+  ```
+    Run these two commands in your terminal to add Homebrew to your PATH:
+      echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/mattdecuir/.profile
+      eval "$(/opt/homebrew/bin/brew shellenv)"
+  ```
+
+* Need to install firefox developer edition

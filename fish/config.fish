@@ -36,6 +36,9 @@ set fish_pager_color_progress brwhite --background=cyan
 # helpful commands
 alias bundle-ag="bundle show --paths | grep '/gems/' | xargs ag"
 
+# Initialize homebrew
+eval (/opt/homebrew/bin/brew shellenv)
+
 # Initialize rbenv if present
 if test (which rbenv)
   status --is-interactive; and source (rbenv init -|psub)
