@@ -28,9 +28,6 @@ ln -sF dotfiles/.vimrc ~/.vimrc
 ```
 open http://brew.sh
 # run curl command to install
-# run brew commands from output to add Homebrew to your path
-#   eval ... >> /Users/[username]/.zprofile
-#   eval "$(/opt/homebrew/bin/brew shellenv)"
 brew tap homebrew/cask
 brew tap homebrew/cask-versions
 brew tap heroku/brew
@@ -153,7 +150,7 @@ ln -sF ~/dotfiles/vscode/settings.json ~/Library/Application\ Support/Code/User/
   - output from installing brew:
   ```
     Run these two commands in your terminal to add Homebrew to your PATH:
-      echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/mattdecuir/.profile
+      echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/mattdecuir/.profile OR /Users/[username]/.zprofile
       eval "$(/opt/homebrew/bin/brew shellenv)"
   ```
 
