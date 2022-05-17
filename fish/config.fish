@@ -37,7 +37,9 @@ set fish_pager_color_progress brwhite --background=cyan
 alias bundle-ag="bundle show --paths | grep '/gems/' | xargs ag"
 
 # Initialize homebrew
-eval (/opt/homebrew/bin/brew shellenv)
+if test -d /opt/homebrew/bin/brew
+  eval (/opt/homebrew/bin/brew shellenv)
+end
 
 # Initialize rbenv if present
 if test (which rbenv)
@@ -65,6 +67,9 @@ if test -d ~/go
   # single line option that doesn't set $GOPATH
   # set -x PATH $PATH (go env GOPATH)/bin
 end
+
+# add ssh key to ssh-agent
+ssh-add ~/.ssh/id_rsa -q
 
 # Git shortcuts
 set -g fish_user_abbreviations 'ga=git add' \
