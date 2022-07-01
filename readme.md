@@ -101,7 +101,7 @@ Sign into github to sync vscode settings
 #### [asdf](https://asdf-vm.com/#/core-manage-asdf)
 ```
 brew install asdf # if not already installed
-asdf plugin add rubyw
+asdf plugin add ruby
 asdf plugin add nodejs
 ln -sF dotfiles/.asdfrc ~/.asdfrc
 ```
