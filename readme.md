@@ -7,10 +7,17 @@
 ### [generate ssh key](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)
   ```
 ls -al ~/.ssh                           # check for existing SSH key
-ssh-keygen -t rsa -b 4096 -C "EMAIL"    # generate new SSH key
+ssh-keygen -t ed25519 -C "EMAIL"        # generate new SSH key
 eval "$(ssh-agent -s)"                  # make sure ssh agent is running
-ssh-add ~/.ssh/id_rsa                   # add SSH key to ssh-agent
-cat ~/.ssh/id_rsa.pub                   # show SSH key so you can copy to github
+touch ~/.ssh/config                     # create ssh config
+
+# add lines following to ssh config
+Host *
+  AddKeysToAgent yes
+  IdentityFile ~/.ssh/id_ed25519
+
+ssh-add -K ~/.ssh/id_ed25519            # add SSH key to ssh-agent
+cat ~/.ssh/id_ed25519.pub               # show SSH key so you can copy to github
   ```
 
 ### install xcode tools
