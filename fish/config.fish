@@ -69,7 +69,7 @@ if test -d ~/go
 end
 
 # add ssh key to ssh-agent
-ssh-add ~/.ssh/id_rsa -q
+ssh-add -q
 
 # Git shortcuts
 set -g fish_user_abbreviations 'ga=git add' \
