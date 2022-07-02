@@ -4,6 +4,8 @@
 export DOTFILES=~/dotfiles
 export ZSH=$DOTFILES/zsh/.oh-my-zsh
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -88,4 +90,5 @@ bindkey -v # -e for emacs
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-source $DOTFILES/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# THIS USED TO WORK BUT DOESN'T ANYMORE
+# source $DOTFILES/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

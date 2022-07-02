@@ -37,7 +37,7 @@ set fish_pager_color_progress brwhite --background=cyan
 alias bundle-ag="bundle show --paths | grep '/gems/' | xargs ag"
 
 # Initialize homebrew
-if test -d /opt/homebrew/bin/brew
+if test -d /opt/homebrew/bin
   eval (/opt/homebrew/bin/brew shellenv)
 end
 
