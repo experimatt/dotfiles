@@ -13,8 +13,8 @@ touch ~/.ssh/config                     # create ssh config
 
 # add lines following to ssh config
 Host *
-  AddKeysToAgent yes
-  IdentityFile ~/.ssh/id_ed25519
+    AddKeysToAgent yes
+    IdentityFile ~/.ssh/id_ed25519
 
 ssh-add -K ~/.ssh/id_ed25519            # add SSH key to ssh-agent
 cat ~/.ssh/id_ed25519.pub               # show SSH key so you can copy to github
@@ -35,7 +35,7 @@ ln -sF dotfiles/.vimrc ~/.vimrc
 ```
 open http://brew.sh
 # run curl command to install
-# run eval script to initialize
+eval "$(/opt/homebrew/bin/brew shellenv)" # initialize brew
 brew tap homebrew/cask
 brew tap homebrew/cask-versions
 brew tap heroku/brew
@@ -52,41 +52,34 @@ cat ~/dotfiles/brew-list | xargs brew install
 ## Terminal setup
 
 ### fish setup
-New path is `/opt/homebrew/bin/fish`. Used to be `/usr/local/bin/fish`.
-
 ```
 echo "/opt/homebrew/bin/fish" | sudo tee -a /etc/shells
 chsh -s /opt/homebrew/bin/fish
 mkdir -p .config/fish
 ln -sF ~/dotfiles/fish/config.fish ~/.config/fish/config.fish
 ln -sF ~/dotfiles/fish/functions ~/.config/fish
+# restart terminal
 ```
 
-### bash setup
-TODO: Re-do this section if needed
-
+### basic bash/zsh setup
 ```
 ln -sF dotfiles/bash/.bash_profile ~/.bash_profile
 ln -sF dotfiles/bash/.bashrc ~/.bashrc
+ln -sF dotfiles/zsh/.zprofile ~/.zprofile
+
+touch ~/.hushlogin # hush last login in terminal
 ```
 
-### zsh setup (if using)
-TODO: Re-do this section
-TODO: Merge .zprofile and .zshrc (.zprofile is new mac default & mentioned in brew instructions)
+### additional zsh setup (mac default)
+Only needed if using zsh as primary shell.
 
 ```
-ln -sF dotfiles/zsh/.zshrc ~/.zshrc
 ln -sF dotfiles/zsh/.oh-my-zsh ~/.oh-my-zsh
 cd dotfiles
 git submodule init
 git submodule update
 chsh -s /bin/zsh
-source ~/.zshrc # or restart terminal
-```
-
-### misc setup
-```
-touch ~/.hushlogin # hush last login in terminal
+# restart terminal
 ```
 
 ### git setup
@@ -95,16 +88,19 @@ cp ~/dotfiles/.gitconfig ~/.gitconfig
 # open the file and update email address
 ```
 
-### vscode setup
-Sign into github to sync vscode settings
+### other setup
+
+* Install Rosetta after brew & brew cask install (e.g. when opening spectacle)
+* VS Code: Sign into github to sync vscode settings
+* May want to install 1Password 6 + classic extensions
 
 ### version management
 
 #### [asdf](https://asdf-vm.com/#/core-manage-asdf)
 ```
-brew install asdf # if not already installed
-asdf plugin add ruby
-asdf plugin add nodejs
+brew install asdf                   # if not already installed
+asdf plugin add ruby                # if needed
+asdf plugin add nodejs              # if needed
 ln -sF dotfiles/.asdfrc ~/.asdfrc
 ```
 
@@ -130,7 +126,7 @@ ln -sF dotfiles/.asdfrc ~/.asdfrc
 
 ## No longer used
 
-### atom config
+### atom
 ```
 # open atom
 # install sync-settings
@@ -149,18 +145,3 @@ brew install rbenv nodenv
 ```
 ln -sF ~/dotfiles/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
 ```
-
-## 2021-11 Notes from M1 Max MBP setup
-* TODO: Update readme instructions to account for `.zprofile` being the default instead of `.bash_profile`.
-* Install Rosetta after brew & brew cask install
-* 1Password 6 + classic extension
-* New homebrew path starts with `/opt/homebrew` now (instead of `/usr/local`).
-  - Note: As of Homebrew 3.0.0 the default installation on an M1 machine is going to be the Apple Silicon version and will be installed to `/opt/homebrew`.
-  - output from installing brew:
-  ```
-    Run these two commands in your terminal to add Homebrew to your PATH:
-      echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/mattdecuir/.profile OR /Users/[username]/.zprofile
-      eval "$(/opt/homebrew/bin/brew shellenv)"
-  ```
-
-* Need to install firefox developer edition
