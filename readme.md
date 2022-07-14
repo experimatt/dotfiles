@@ -35,6 +35,7 @@ ln -sF dotfiles/.vimrc ~/.vimrc
 ```
 open http://brew.sh
 # run curl command to install
+# run eval script to initialize (TODO: Merge .zprofile and .zshrc)
 brew tap homebrew/cask
 brew tap homebrew/cask-versions
 brew tap heroku/brew
