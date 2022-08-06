@@ -59,6 +59,11 @@ end
 # add ./bin to PATH
 set -x PATH ./bin $PATH
 
+# add yarn bin to path if present
+if test (yarn global bin)
+  fish_add_path (yarn global bin)
+end
+
 # Go (home machine)
 if test -d ~/go
   set -x GOPATH $HOME/go
