@@ -64,14 +64,18 @@ if test (yarn global bin)
   fish_add_path (yarn global bin)
 end
 
-# Go (home machine)
-if test -d ~/go
-  set -x GOPATH $HOME/go
-  set -x PATH $PATH $GOPATH/bin
-
-  # single line option that doesn't set $GOPATH
-  # set -x PATH $PATH (go env GOPATH)/bin
+# Android (work)
+if test -d ~/Library/Android/sdk
+  set -x ANDROID_SDK_ROOT $HOME/Library/Android/sdk
+  fish_add_path $ANDROID_SDK_ROOT/emulator
+  fish_add_path $ANDROID_SDK_ROOT/platform-tools
 end
+
+# Google Cloud SDK (work)
+if test -f ~/google-cloud-sdk/path.fish.inc
+  . ~/google-cloud-sdk/path.fish.inc
+end
+
 
 # add ssh key to ssh-agent
 ssh-add -q
