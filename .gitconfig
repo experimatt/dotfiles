@@ -19,3 +19,6 @@
 	editor = code --wait
 [rebase]
   autosquash = true
+
+[init]
+	defaultBranch = main
