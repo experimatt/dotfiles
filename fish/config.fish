@@ -69,6 +69,12 @@ if test -f ~/google-cloud-sdk/path.fish.inc
   . ~/google-cloud-sdk/path.fish.inc
 end
 
+# add go to path if present
+if test -d ~/go
+  set -x GOPATH $HOME/go
+  set -x PATH $PATH $GOPATH/bin
+end
+
 # add ssh key to ssh-agent
 ssh-add -q
 
