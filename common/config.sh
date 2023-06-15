@@ -3,7 +3,7 @@ export PATH="$HOME/bin:$PATH"
 export PATH="./bin:$PATH"
 
 # Initialize asdf if installed
-if test $(which asdf); then
+if command -v asdf &> /dev/null; then
   source "$(brew --prefix asdf)/asdf.sh"
 fi
 

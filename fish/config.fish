@@ -53,7 +53,11 @@ end
 
 # Initialize asdf if present
 if test (which asdf)
-  source (brew --prefix asdf)/asdf.fish
+  if test -e (brew --prefix asdf)/asdf.fish
+    source (brew --prefix asdf)/asdf.fish
+  else
+    source (brew --prefix asdf)/libexec/asdf.fish
+  end
 end
 
 # add ./bin to PATH
