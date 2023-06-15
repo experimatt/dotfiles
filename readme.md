@@ -71,6 +71,8 @@ touch ~/.hushlogin # hush last login in terminal
 ```
 
 ### additional zsh setup (mac default)
+TODO: REVISIT THIS IN THE FUTURE
+
 Only needed if using zsh as primary shell.
 
 ```
@@ -92,7 +94,6 @@ cp ~/dotfiles/.gitconfig ~/.gitconfig
 
 * Install Rosetta after brew & brew cask install (e.g. when opening spectacle)
 * VS Code: Sign into github to sync vscode settings
-* May want to install 1Password 6 + classic extensions
 
 ### version management
 
@@ -137,11 +138,4 @@ ln -sF dotfiles/.asdfrc ~/.asdfrc
 #### rbenv & nodenv
 ```
 brew install rbenv nodenv
-```
-
-### vscode setup
-2021-11-03 Note to future Matt: delete this in the future if the symlink isn't needed
-
-```
-ln -sF ~/dotfiles/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
 ```
