@@ -63,10 +63,10 @@ end
 # add ./bin to PATH
 set -x PATH ./bin $PATH
 
-# add yarn bin to path if present
-if test (yarn global bin)
-  fish_add_path (yarn global bin)
-end
+# add yarn bin to path if present (YARN v1 only. No longer applicable in v2+)
+# if test (yarn global bin)
+#   fish_add_path (yarn global bin)
+# end
 
 # Google Cloud SDK (work)
 if test -f ~/google-cloud-sdk/path.fish.inc
@@ -77,6 +77,27 @@ end
 if test -d ~/go
   set -x GOPATH $HOME/go
   set -x PATH $PATH $GOPATH/bin
+end
+
+# credly local acclaim stats for docker
+if test -d $HOME/projects/acclaim_stats
+  set -x ACCLAIM_STATS_DIR $HOME/projects/acclaim_stats
+end
+
+# credly local rubymine for docker
+if test -d $HOME/rubymine-empty
+  set -x RUBYMINE_HELPERS_DIR $HOME/rubymine-empty
+end
+
+# credly helper command
+if test -d $HOME/projects/acclaim-server
+  alias dev-exec-core="docker compose -f docker-compose.dev.yml exec acclaim-server"
+  alias dsh="docker compose -f docker-compose.dev.yml exec acclaim-server bash"
+  alias dd="docker compose -f docker-compose.dev.yml exec acclaim-server"
+  alias du="docker compose -f docker-compose.dev.yml up -d"
+  alias db="docker compose -f docker-compose.dev.yml build"
+  alias ds="docker compose -f docker-compose.dev.yml stop"
+  alias dr="docker compose -f docker-compose.dev.yml create --force-recreate"
 end
 
 # add ssh key to ssh-agent
