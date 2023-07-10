@@ -91,9 +91,10 @@ end
 
 # credly helper command
 if test -d $HOME/projects/acclaim-server
+  alias dcdev="docker compose -f docker-compose.dev.yml"
+  alias dup="docker compose -f docker-compose.dev.yml up"
   alias dsh="docker compose -f docker-compose.dev.yml exec acclaim-server bash"
   alias dexec="docker compose -f docker-compose.dev.yml exec acclaim-server"
-  alias dup="docker compose -f docker-compose.dev.yml up -d"
   alias dbuild="docker compose -f docker-compose.dev.yml build"
   alias dstop="docker compose -f docker-compose.dev.yml stop"
   alias dcreate="docker compose -f docker-compose.dev.yml create --force-recreate"
