@@ -68,7 +68,7 @@ set -x PATH ./bin $PATH
 #   fish_add_path (yarn global bin)
 # end
 
-# Google Cloud SDK (work)
+# Google Cloud SDK if present (work)
 if test -f ~/google-cloud-sdk/path.fish.inc
   . ~/google-cloud-sdk/path.fish.inc
 end
@@ -87,6 +87,11 @@ end
 # credly local rubymine for docker
 if test -d $HOME/rubymine-empty
   set -x RUBYMINE_HELPERS_DIR $HOME/rubymine-empty
+end
+
+# source private stuff
+if test -e $HOME/dotfiles/fish/private_config.fish
+  source $HOME/dotfiles/fish/private_config.fish
 end
 
 # credly helper command
