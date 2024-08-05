@@ -2,9 +2,15 @@ export PROJECT_HOME="$HOME/projects"
 export PATH="$HOME/bin:$PATH"
 export PATH="./bin:$PATH"
 
+# Initialize homebrew if installed
+if test -d /opt/homebrew/bin; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 # Initialize asdf if installed
 if command -v asdf &> /dev/null; then
-  source "$(brew --prefix asdf)/asdf.sh"
+  # source "$(brew --prefix asdf)/asdf.sh"
+  . "$(brew --prefix asdf)/libexec/asdf.sh"
 fi
 
 # Initialize rbenv if installed
@@ -17,11 +23,7 @@ if test -d $HOME/.nodenv; then
   eval "$(nodenv init -)"
 fi
 
-## No longer used
-
-# Initialize python stuff
-# if test -d .virtualenvs; then
-#   export PATH="$HOME/Library/Python/2.7/bin:$PATH"
-#   export WORKON_HOME="$HOME/.python/virtualenvwrapper"
-#   source virtualenvwrapper.sh
-# fi
+# source private stuff
+if test -f $HOME/dotfiles/common/private_config.sh; then
+  source $HOME/dotfiles/common/private_config.sh
+fi

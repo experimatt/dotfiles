@@ -1,0 +1,5 @@
+# this file is for private secrets that we don't want committed to github
+
+if test -d $HOME/projects/acclaim-server; then
+  export GITHUB_PAT="[KEY GOES HERE]"
+fi

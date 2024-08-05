@@ -96,13 +96,21 @@ end
 
 # credly helper command
 if test -d $HOME/projects/acclaim-server
-  alias dcdev="docker compose -f docker-compose.dev.yml"
+  alias dcd="docker compose -f docker-compose.dev.yml"
   alias dup="docker compose -f docker-compose.dev.yml up"
   alias dsh="docker compose -f docker-compose.dev.yml exec acclaim-server bash"
   alias dexec="docker compose -f docker-compose.dev.yml exec acclaim-server"
   alias dbuild="docker compose -f docker-compose.dev.yml build"
   alias dstop="docker compose -f docker-compose.dev.yml stop"
   alias dcreate="docker compose -f docker-compose.dev.yml create --force-recreate"
+  # e2e test aliases
+  alias de2e="env COMPOSE_PROFILES=test-e2e docker compose -f docker-compose.dev.yml"
+  alias dcasper="env COMPOSE_PROFILES=test-casper docker compose -f docker-compose.dev.yml"
+  alias de2esh="docker compose -f docker-compose.dev.yml exec test-acclaim-server bash"
+  alias de2etr1="docker compose -f docker-compose.dev.yml run test-acclaim-server rails db:drop db:create db:migrate db:environment:set"
+  alias de2etr2="docker compose -f docker-compose.dev.yml run test-acclaim-stats-app rails db:drop db:create db:migrate db:environment:set"
+  alias dpw="docker compose -f docker-compose.dev.yml exec test-acclaim-server bash bin/run-playwright-tests.sh"
+  alias jt="yarn workspace acclaim-server  jest --runTestsByPath"
 end
 
 # add ssh key to ssh-agent
