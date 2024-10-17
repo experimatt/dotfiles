@@ -109,8 +109,9 @@ if test -d $HOME/projects/acclaim-server
   alias de2esh="docker compose -f docker-compose.dev.yml exec test-acclaim-server bash"
   alias de2etr1="docker compose -f docker-compose.dev.yml run test-acclaim-server rails db:drop db:create db:migrate db:environment:set"
   alias de2etr2="docker compose -f docker-compose.dev.yml run test-acclaim-stats-app rails db:drop db:create db:migrate db:environment:set"
-  alias dpw="docker compose -f docker-compose.dev.yml exec test-acclaim-server bash bin/run-playwright-tests.sh"
-  alias jt="yarn workspace acclaim-server  jest --runTestsByPath"
+  alias jt="yarn workspace acclaim-server jest --runTestsByPath"
+  alias rt="dexec rails test"
+  alias pt="docker compose -f docker-compose.dev.yml exec test-acclaim-server bash bin/run-playwright-tests.sh"
 end
 
 # add ssh key to ssh-agent
