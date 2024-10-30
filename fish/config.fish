@@ -35,6 +35,7 @@ set fish_pager_color_progress brwhite --background=cyan
 
 # helpful commands
 alias bundle-ag="bundle show --paths | grep '/gems/' | xargs ag"
+alias delete-last-cmd-from-history="history delete --exact --case-sensitive (history search --max 1)"
 
 # Initialize homebrew
 if test -d /opt/homebrew/bin
