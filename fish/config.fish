@@ -36,6 +36,7 @@ set fish_pager_color_progress brwhite --background=cyan
 # helpful commands
 alias bundle-ag="bundle show --paths | grep '/gems/' | xargs ag"
 alias delete-last-cmd-from-history="history delete --exact --case-sensitive (history search --max 1)"
+alias git-remove-deleted-branches="git fetch --prune; and git branch -vv | grep ': gone]' | awk '{print \$1}' | xargs git branch -D"
 
 # Initialize homebrew
 if test -d /opt/homebrew/bin
@@ -113,6 +114,7 @@ if test -d $HOME/projects/acclaim-server
   alias jt="yarn workspace acclaim-server jest --runTestsByPath"
   alias rt="dexec rails test"
   alias pt="docker compose -f docker-compose.dev.yml exec test-acclaim-server bash bin/run-playwright-tests.sh"
+  alias ptd="docker compose -f docker-compose.dev.yml exec test-acclaim-server bash bin/run-playwright-tests-docker.sh"
 end
 
 # add ssh key to ssh-agent
