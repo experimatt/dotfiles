@@ -112,6 +112,7 @@ if test -d $HOME/projects/acclaim-server
   alias de2etr1="docker compose -f docker-compose.dev.yml run test-acclaim-server rails db:drop db:create db:migrate db:environment:set"
   alias de2etr2="docker compose -f docker-compose.dev.yml run test-acclaim-stats-app rails db:drop db:create db:migrate db:environment:set"
   alias jt="yarn workspace acclaim-server jest --runTestsByPath"
+  alias jtp="dexec yarn workspace @credly/csds jest --testPathPattern="
   alias rt="dexec rails test"
   alias pt="docker compose -f docker-compose.dev.yml exec test-acclaim-server bash bin/run-playwright-tests.sh"
   alias ptd="docker compose -f docker-compose.dev.yml exec test-acclaim-server bash bin/run-playwright-tests-docker.sh"
