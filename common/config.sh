@@ -9,8 +9,7 @@ fi
 
 # Initialize asdf if installed
 if command -v asdf &> /dev/null; then
-  # source "$(brew --prefix asdf)/asdf.sh"
-  . "$(brew --prefix asdf)/libexec/asdf.sh"
+  export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 fi
 
 # Initialize rbenv if installed

@@ -2,7 +2,8 @@ source ~/dotfiles/common/config.sh
 
 export PS1="🍕 :\W$ "
 
-alias chrome='open -a Google\Chrome'
+# asdf completions
+. <(asdf completion bash)
 
 # use vim keybindings
 set -o vi

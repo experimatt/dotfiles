@@ -54,13 +54,31 @@ if test (which nodenv)
 end
 
 # Initialize asdf if present
+# Also, run this locally once: asdf completion fish > ~/.config/fish/completions/asdf.fish
 if test (which asdf)
-  if test -e (brew --prefix asdf)/asdf.fish
-    source (brew --prefix asdf)/asdf.fish
+  # ASDF configuration code
+  if test -z $ASDF_DATA_DIR
+    set _asdf_shims "$HOME/.asdf/shims"
   else
-    source (brew --prefix asdf)/libexec/asdf.fish
+    set _asdf_shims "$ASDF_DATA_DIR/shims"
   end
+
+  # Do not use fish_add_path (added in Fish 3.2) because it
+  # potentially changes the order of items in PATH
+  if not contains $_asdf_shims $PATH
+    set -gx --prepend PATH $_asdf_shims
+  end
+  set --erase _asdf_shims
 end
+
+# # OLD VERSION: Initialize asdf if present
+# if test (which asdf)
+#   if test -e (brew --prefix asdf)/asdf.fish
+#     source (brew --prefix asdf)/asdf.fish
+#   else
+#     source (brew --prefix asdf)/libexec/asdf.fish
+#   end
+# end
 
 # add ./bin to PATH
 set -x PATH ./bin $PATH
