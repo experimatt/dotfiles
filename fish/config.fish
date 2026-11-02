@@ -38,6 +38,13 @@ alias bundle-ag="bundle show --paths | grep '/gems/' | xargs ag"
 alias delete-last-cmd-from-history="history delete --exact --case-sensitive (history search --max 1)"
 alias git-remove-deleted-branches="git fetch --prune; and git branch -vv | grep ': gone]' | awk '{print \$1}' | xargs git branch -D"
 
+function strip-blank-spaces --description "Remove trailing whitespace from blank lines"
+  for file in $argv
+    sed -i '' 's/^[[:space:]]*$//' $file
+    echo "Cleaned: $file"
+  end
+end
+
 # Initialize homebrew
 if test -d /opt/homebrew/bin
   eval (/opt/homebrew/bin/brew shellenv)
@@ -149,3 +156,6 @@ set -g fish_user_abbreviations 'ga=git add' \
                                'gpl=git pull' \
                                'gps=git push' \
                                'gap=git add -p'
+
+# needed for claude code?
+export PATH="$HOME/.local/bin:$PATH"
