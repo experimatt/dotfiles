@@ -155,7 +155,7 @@ set -g fish_user_abbreviations 'ga=git add' \
                                'gs=git status' \
                                'gpl=git pull' \
                                'gps=git push' \
-                               'gap=git add -p'
+                               'gap=git add -p' \
+                               'grd=git-remove-deleted-branches'
 
-# needed for claude code?
 export PATH="$HOME/.local/bin:$PATH"
